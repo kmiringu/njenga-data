@@ -1,0 +1,28 @@
+county,unit_type,cost_category,amount_kes,pct_of_total_cost,year,source_bucket,unit_size_m2
+Nairobi,55m2_house,Land,378575,9.57,2022,Land,55
+Nairobi,55m2_house,Infrastructure,966150,24.43,2022,Infrastructure,55
+Nairobi,55m2_house,Compliance,57750,1.46,2022,Compliances and approvals,55
+Nairobi,55m2_house,Construction,1833013,46.36,2022,Construction,55
+Nairobi,55m2_house,Professional_fees,64155,1.62,2022,Professional and project management fees,55
+Nairobi,55m2_house,Other_dev_costs,43161,1.09,2022,Other development costs,55
+Nairobi,55m2_house,Marketing,58102,1.47,2022,Marketing,55
+Nairobi,55m2_house,Finance,475691,12.03,2022,Finance,55
+Nairobi,55m2_house,Developer_overhead,77470,1.96,2022,Developer overhead and management costs,55
+Nairobi,2BR_lowrise,Land,135226,4.48,2022,Land,44
+Nairobi,2BR_lowrise,Infrastructure,139228,4.62,2022,Infrastructure,44
+Nairobi,2BR_lowrise,Compliance,56514,1.87,2022,Compliances and approvals,44
+Nairobi,2BR_lowrise,Construction,1711501,56.76,2022,Construction,44
+Nairobi,2BR_lowrise,Professional_fees,308070,10.22,2022,Professional and project management fees,44
+Nairobi,2BR_lowrise,Other_dev_costs,51345,1.70,2022,Other development costs,44
+Nairobi,2BR_lowrise,Marketing,43175,1.43,2022,Marketing,44
+Nairobi,2BR_lowrise,Finance,469686,15.58,2022,Finance,44
+Nairobi,2BR_lowrise,Developer_overhead,100742,3.34,2022,Developer overhead and management costs,44
+Nairobi,2BR_highrise,Land,130617,3.99,2022,Land,44
+Nairobi,2BR_highrise,Infrastructure,140461,4.30,2022,Infrastructure,44
+Nairobi,2BR_highrise,Compliance,56514,1.73,2022,Compliances and approvals,44
+Nairobi,2BR_highrise,Construction,1866445,57.08,2022,Construction,44
+Nairobi,2BR_highrise,Professional_fees,335960,10.27,2022,Professional and project management fees,44
+Nairobi,2BR_highrise,Other_dev_costs,55993,1.71,2022,Other development costs,44
+Nairobi,2BR_highrise,Marketing,46936,1.44,2022,Marketing,44
+Nairobi,2BR_highrise,Finance,543058,16.61,2022,Finance,44
+Nairobi,2BR_highrise,Developer_overhead,93871,2.87,2022,Developer overhead and management costs,44
