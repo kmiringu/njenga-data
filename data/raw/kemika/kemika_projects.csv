@@ -1,0 +1,8 @@
+project_id,county,unit_type,land_kes,materials_kes,labour_kes,compliance_kes,overheads_kes,year
+Project_Nairobi_001,Nairobi,3BR,1050000,1580000,640000,560000,460000,2023
+Project_Nairobi_002,Nairobi,2BR,820000,1180000,465000,405000,338000,2023
+Project_Nairobi_003,Nairobi,2BR,880000,1240000,490000,430000,360000,2024
+Project_Kiambu_001,Kiambu,3BR,720000,1480000,590000,365000,348000,2023
+Project_Kiambu_002,Kiambu,2BR,560000,1080000,428000,268000,270000,2024
+Project_Nakuru_001,Nakuru,2BR,310000,960000,384000,190000,238000,2023
+Project_Mombasa_001,Mombasa,3BR,780000,1410000,564000,250000,392000,2024
