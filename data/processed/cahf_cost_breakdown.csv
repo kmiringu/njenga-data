@@ -1,0 +1,31 @@
+county,unit_type,unit_size_m2,cost_category,amount_kes,pct_of_total,year,source
+Nairobi,55m2_house,55,Land,378575,9.57,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_lowrise,44,Land,135226,4.48,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_highrise,44,Land,130617,3.99,2022,CAHF HDCB Kenya 2022
+Nairobi,55m2_house,55,Infrastructure,966150,24.43,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_lowrise,44,Infrastructure,139228,4.62,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_highrise,44,Infrastructure,140461,4.3,2022,CAHF HDCB Kenya 2022
+Nairobi,55m2_house,55,Compliance,57750,1.46,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_lowrise,44,Compliance,56514,1.87,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_highrise,44,Compliance,56514,1.73,2022,CAHF HDCB Kenya 2022
+Nairobi,55m2_house,55,Construction,1833013,46.36,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_lowrise,44,Construction,1711501,56.76,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_highrise,44,Construction,1866445,57.08,2022,CAHF HDCB Kenya 2022
+Nairobi,55m2_house,55,Professional fees,64155,1.62,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_lowrise,44,Professional fees,308070,10.22,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_highrise,44,Professional fees,335960,10.27,2022,CAHF HDCB Kenya 2022
+Nairobi,55m2_house,55,Other development costs,43161,1.09,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_lowrise,44,Other development costs,51345,1.7,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_highrise,44,Other development costs,55993,1.71,2022,CAHF HDCB Kenya 2022
+Nairobi,55m2_house,55,Marketing,58102,1.47,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_lowrise,44,Marketing,43175,1.43,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_highrise,44,Marketing,46936,1.44,2022,CAHF HDCB Kenya 2022
+Nairobi,55m2_house,55,Finance,475691,12.03,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_lowrise,44,Finance,469686,15.58,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_highrise,44,Finance,543058,16.61,2022,CAHF HDCB Kenya 2022
+Nairobi,55m2_house,55,Developer overhead,77470,1.96,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_lowrise,44,Developer overhead,100742,3.34,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_highrise,44,Developer overhead,93871,2.87,2022,CAHF HDCB Kenya 2022
+Nairobi,55m2_house,55,Total development cost,3954067,100.0,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_lowrise,44,Total development cost,3015486,100.0,2022,CAHF HDCB Kenya 2022
+Nairobi,2BR_highrise,44,Total development cost,3269856,100.0,2022,CAHF HDCB Kenya 2022
