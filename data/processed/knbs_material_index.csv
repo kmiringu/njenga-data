@@ -1,0 +1,581 @@
+﻿year,quarter,category,product,weight,index_value
+2021,Q1,Equipment,Compressors,3.04,99.45
+2021,Q1,Equipment,Equipment-Concrete Mixer,5.16,100.0
+2021,Q1,Equipment,Equipment-Concrete poker / Vibrator,2.36,100.0
+2021,Q1,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,99.3
+2021,Q1,Labour,Carpenter/Painter/Welder/Mechanic,3.53,104.54
+2021,Q1,Labour,Casual,6.67,106.99
+2021,Q1,Labour,Machine /plant operators,0.91,100.38
+2021,Q1,Labour,Mason/foreman,7.8,104.29
+2021,Q1,Labour,Plumber/Electrician,0.52,102.38
+2021,Q1,Labour,Watchman,2.01,106.49
+2021,Q1,Materials,Ballast,4.5,98.13
+2021,Q1,Materials,Cement /Lime,14.18,97.22
+2021,Q1,Materials,Chip boards and MDF,1.01,98.96
+2021,Q1,Materials,Damp Proofing and Anti-termite,0.58,91.42
+2021,Q1,Materials,Doors,0.24,94.95
+2021,Q1,Materials,Electrical fittings,0.51,100.6
+2021,Q1,Materials,Glass and glass putty,0.16,106.12
+2021,Q1,Materials,Hard core,8.37,104.95
+2021,Q1,Materials,Locks and iron mongery,0.78,101.23
+2021,Q1,Materials,Metal doors and windows,0.26,101.27
+2021,Q1,Materials,Paints,1.06,100.01
+2021,Q1,Materials,Paving blocks,2.06,111.63
+2021,Q1,Materials,"Quarry products(waste,dust and murram)",1.27,102.86
+2021,Q1,Materials,Roofing materials,0.7,93.95
+2021,Q1,Materials,Sand,3.14,93.41
+2021,Q1,Materials,Sanitary fittings,0.16,101.56
+2021,Q1,Materials,Steel and reinforced bars,10.69,120.78
+2021,Q1,Materials,Stones,2.42,96.77
+2021,Q1,Materials,Tiles,0.84,104.3
+2021,Q1,Materials,Timber and Wood,2.2,101.77
+2021,Q1,Materials,Water fittings,0.11,101.6
+2021,Q1,Materials,Water wastes,0.12,99.84
+2021,Q1,Transport and Fuel,Fuel,3.99,97.09
+2021,Q1,Transport and Fuel,Transport,5.99,105.65
+2021,Q2,Equipment,Compressors,3.04,100.07
+2021,Q2,Equipment,Equipment-Concrete Mixer,5.16,100.67
+2021,Q2,Equipment,Equipment-Concrete poker / Vibrator,2.36,103.71
+2021,Q2,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,99.89
+2021,Q2,Labour,Carpenter/Painter/Welder/Mechanic,3.53,104.54
+2021,Q2,Labour,Casual,6.67,106.99
+2021,Q2,Labour,Machine /plant operators,0.91,100.38
+2021,Q2,Labour,Mason/foreman,7.8,104.29
+2021,Q2,Labour,Plumber/Electrician,0.52,102.38
+2021,Q2,Labour,Watchman,2.01,106.49
+2021,Q2,Materials,Ballast,4.5,99.44
+2021,Q2,Materials,Cement /Lime,14.18,97.66
+2021,Q2,Materials,Chip boards and MDF,1.01,99.25
+2021,Q2,Materials,Damp Proofing and Anti-termite,0.58,90.87
+2021,Q2,Materials,Doors,0.24,100.07
+2021,Q2,Materials,Electrical fittings,0.51,102.71
+2021,Q2,Materials,Glass and glass putty,0.16,108.06
+2021,Q2,Materials,Hard core,8.37,104.97
+2021,Q2,Materials,Locks and iron mongery,0.78,104.8
+2021,Q2,Materials,Metal doors and windows,0.26,103.67
+2021,Q2,Materials,Paints,1.06,100.26
+2021,Q2,Materials,Paving blocks,2.06,116.3
+2021,Q2,Materials,"Quarry products(waste,dust and murram)",1.27,104.08
+2021,Q2,Materials,Roofing materials,0.7,97.04
+2021,Q2,Materials,Sand,3.14,94.79
+2021,Q2,Materials,Sanitary fittings,0.16,102.43
+2021,Q2,Materials,Steel and reinforced bars,10.69,126.87
+2021,Q2,Materials,Stones,2.42,96.64
+2021,Q2,Materials,Tiles,0.84,104.16
+2021,Q2,Materials,Timber and Wood,2.2,102.64
+2021,Q2,Materials,Water fittings,0.11,102.35
+2021,Q2,Materials,Water wastes,0.12,102.3
+2021,Q2,Transport and Fuel,Fuel,3.99,100.78
+2021,Q2,Transport and Fuel,Transport,5.99,108.81
+2021,Q3,Equipment,Equipment-Concrete Mixer,5.16,100.0
+2021,Q3,Equipment,Equipment-Concrete poker / Vibrator,2.36,103.71
+2021,Q3,Labour,Carpenter/Painter/Welder/Mechanic,3.53,104.54
+2021,Q3,Labour,Casual,6.67,106.99
+2021,Q3,Labour,Machine /plant operators,0.91,100.38
+2021,Q3,Labour,Mason/foreman,7.8,104.29
+2021,Q3,Labour,Plumber/Electrician,0.52,102.38
+2021,Q3,Labour,Watchman,2.01,106.49
+2021,Q3,Materials,Doors,0.24,101.5
+2021,Q3,Materials,Electrical fittings,0.51,102.41
+2021,Q3,Materials,Glass and glass putty,0.16,111.52
+2021,Q3,Materials,Hard core,8.37,103.64
+2021,Q3,Materials,Locks and iron mongery,0.78,104.89
+2021,Q3,Materials,Metal doors and windows,0.26,101.27
+2021,Q3,Materials,Paints,1.06,101.56
+2021,Q3,Materials,Paving blocks,2.06,120.61
+2021,Q3,Materials,"Quarry products(waste,dust and murram)",1.27,103.38
+2021,Q3,Materials,Sanitary fittings,0.16,102.87
+2021,Q3,Materials,Steel and reinforced bars,10.69,129.29
+2021,Q3,Materials,Tiles,0.84,105.25
+2021,Q3,Materials,Timber and Wood,2.2,100.66
+2021,Q3,Materials,Water fittings,0.11,104.1
+2021,Q3,Materials,Water wastes,0.12,103.34
+2021,Q3,Transport and Fuel,Fuel,3.99,100.79
+2021,Q3,Transport and Fuel,Transport,5.99,108.81
+2021,Q4,Equipment,Compressors,3.04,99.45
+2021,Q4,Equipment,Equipment-Concrete Mixer,5.16,97.99
+2021,Q4,Equipment,Equipment-Concrete poker / Vibrator,2.36,103.71
+2021,Q4,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,100.01
+2021,Q4,Labour,Carpenter/Painter/Welder/Mechanic,3.53,104.56
+2021,Q4,Labour,Casual,6.67,106.99
+2021,Q4,Labour,Machine /plant operators,0.91,100.61
+2021,Q4,Labour,Mason/foreman,7.8,104.43
+2021,Q4,Labour,Plumber/Electrician,0.52,102.38
+2021,Q4,Labour,Watchman,2.01,106.49
+2021,Q4,Materials,Ballast,4.5,97.96
+2021,Q4,Materials,Cement /Lime,14.18,96.32
+2021,Q4,Materials,Chip boards and MDF,1.01,98.66
+2021,Q4,Materials,Damp Proofing and Anti-termite,0.58,91.84
+2021,Q4,Materials,Doors,0.24,100.68
+2021,Q4,Materials,Electrical fittings,0.51,102.79
+2021,Q4,Materials,Glass and glass putty,0.16,114.18
+2021,Q4,Materials,Hard core,8.37,103.64
+2021,Q4,Materials,Locks and iron mongery,0.78,105.31
+2021,Q4,Materials,Metal doors and windows,0.26,103.42
+2021,Q4,Materials,Paints,1.06,102.13
+2021,Q4,Materials,Paving blocks,2.06,120.61
+2021,Q4,Materials,"Quarry products(waste,dust and murram)",1.27,103.9
+2021,Q4,Materials,Roofing materials,0.7,101.61
+2021,Q4,Materials,Sand,3.14,93.93
+2021,Q4,Materials,Sanitary fittings,0.16,103.18
+2021,Q4,Materials,Steel and reinforced bars,10.69,131.81
+2021,Q4,Materials,Stones,2.42,95.35
+2021,Q4,Materials,Tiles,0.84,104.53
+2021,Q4,Materials,Timber and Wood,2.2,99.57
+2021,Q4,Materials,Water fittings,0.11,101.5
+2021,Q4,Materials,Water wastes,0.12,102.91
+2021,Q4,Transport and Fuel,Fuel,3.99,102.3
+2021,Q4,Transport and Fuel,Transport,5.99,108.9
+2022,Q1,Equipment,Compressors,3.04,100.97
+2022,Q1,Equipment,Equipment-Concrete Mixer,5.16,100.68
+2022,Q1,Equipment,Equipment-Concrete poker / Vibrator,2.36,109.86
+2022,Q1,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,104.27
+2022,Q1,Labour,Carpenter/Painter/Welder/Mechanic,3.53,106.51
+2022,Q1,Labour,Casual,6.67,108.63
+2022,Q1,Labour,Machine /plant operators,0.91,102.57
+2022,Q1,Labour,Mason/foreman,7.8,106.48
+2022,Q1,Labour,Plumber/Electrician,0.52,103.18
+2022,Q1,Labour,Watchman,2.01,108.89
+2022,Q1,Materials,Cement /Lime,14.18,102.52
+2022,Q1,Materials,Doors,0.24,100.86
+2022,Q1,Materials,Electrical fittings,0.51,112.44
+2022,Q1,Materials,Glass and glass putty,0.16,124.38
+2022,Q1,Materials,Hard core,8.37,107.67
+2022,Q1,Materials,Locks and iron mongery,0.78,108.51
+2022,Q1,Materials,Metal doors and windows,0.26,106.06
+2022,Q1,Materials,Paints,1.06,103.16
+2022,Q1,Materials,Paving blocks,2.06,124.01
+2022,Q1,Materials,"Quarry products(waste,dust and murram)",1.27,104.42
+2022,Q1,Materials,Roofing materials,0.7,102.0
+2022,Q1,Materials,Sanitary fittings,0.16,109.83
+2022,Q1,Materials,Steel and reinforced bars,10.69,183.72
+2022,Q1,Materials,Tiles,0.84,109.97
+2022,Q1,Materials,Water fittings,0.11,112.01
+2022,Q1,Materials,Water wastes,0.12,104.6
+2022,Q1,Transport and Fuel,Fuel,3.99,103.52
+2022,Q1,Transport and Fuel,Transport,5.99,112.65
+2022,Q2,Equipment,Compressors,3.04,101.7
+2022,Q2,Equipment,Equipment-Concrete Mixer,5.16,106.49
+2022,Q2,Equipment,Equipment-Concrete poker / Vibrator,2.36,110.93
+2022,Q2,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,104.56
+2022,Q2,Labour,Carpenter/Painter/Welder/Mechanic,3.53,105.75
+2022,Q2,Labour,Casual,6.67,109.74
+2022,Q2,Labour,Machine /plant operators,0.91,102.4
+2022,Q2,Labour,Mason/foreman,7.8,106.74
+2022,Q2,Labour,Plumber/Electrician,0.52,103.18
+2022,Q2,Labour,Watchman,2.01,108.89
+2022,Q2,Materials,Ballast,4.5,98.54
+2022,Q2,Materials,Cement /Lime,14.18,105.84
+2022,Q2,Materials,Chip boards and MDF,1.01,97.53
+2022,Q2,Materials,Damp Proofing and Anti-termite,0.58,89.76
+2022,Q2,Materials,Doors,0.24,104.41
+2022,Q2,Materials,Electrical fittings,0.51,112.5
+2022,Q2,Materials,Glass and glass putty,0.16,136.13
+2022,Q2,Materials,Hard core,8.37,108.61
+2022,Q2,Materials,Locks and iron mongery,0.78,110.52
+2022,Q2,Materials,Metal doors and windows,0.26,108.05
+2022,Q2,Materials,Paints,1.06,105.11
+2022,Q2,Materials,Paving blocks,2.06,126.98
+2022,Q2,Materials,"Quarry products(waste,dust and murram)",1.27,105.81
+2022,Q2,Materials,Roofing materials,0.7,108.2
+2022,Q2,Materials,Sand,3.14,94.43
+2022,Q2,Materials,Sanitary fittings,0.16,111.57
+2022,Q2,Materials,Steel and reinforced bars,10.69,189.19
+2022,Q2,Materials,Stones,2.42,99.15
+2022,Q2,Materials,Tiles,0.84,109.71
+2022,Q2,Materials,Timber and Wood,2.2,98.41
+2022,Q2,Materials,Water fittings,0.11,111.96
+2022,Q2,Materials,Water wastes,0.12,105.05
+2022,Q2,Transport and Fuel,Fuel,3.99,106.61
+2022,Q2,Transport and Fuel,Transport,5.99,113.09
+2022,Q3,Equipment,Compressors,3.04,104.67
+2022,Q3,Equipment,Equipment-Concrete Mixer,5.16,106.11
+2022,Q3,Equipment,Equipment-Concrete poker / Vibrator,2.36,104.9
+2022,Q3,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,101.76
+2022,Q3,Labour,Carpenter/Painter/Welder/Mechanic,3.53,106.62
+2022,Q3,Labour,Casual,6.67,109.65
+2022,Q3,Labour,Machine /plant operators,0.91,104.65
+2022,Q3,Labour,Mason/foreman,7.8,109.21
+2022,Q3,Labour,Plumber/Electrician,0.52,100.61
+2022,Q3,Labour,Watchman,2.01,110.28
+2022,Q3,Materials,Ballast,4.5,96.59
+2022,Q3,Materials,Cement /Lime,14.18,102.79
+2022,Q3,Materials,Chip boards and MDF,1.01,97.79
+2022,Q3,Materials,Damp Proofing and Anti-termite,0.58,82.4
+2022,Q3,Materials,Doors,0.24,107.83
+2022,Q3,Materials,Electrical fittings,0.51,104.17
+2022,Q3,Materials,Glass and glass putty,0.16,133.66
+2022,Q3,Materials,Hard core,8.37,108.13
+2022,Q3,Materials,Locks and iron mongery,0.78,105.57
+2022,Q3,Materials,Metal doors and windows,0.26,108.27
+2022,Q3,Materials,Paints,1.06,104.59
+2022,Q3,Materials,Paving blocks,2.06,115.12
+2022,Q3,Materials,"Quarry products(waste,dust and murram)",1.27,101.93
+2022,Q3,Materials,Roofing materials,0.7,110.69
+2022,Q3,Materials,Sand,3.14,94.94
+2022,Q3,Materials,Sanitary fittings,0.16,109.92
+2022,Q3,Materials,Steel and reinforced bars,10.69,171.44
+2022,Q3,Materials,Stones,2.42,99.81
+2022,Q3,Materials,Tiles,0.84,111.21
+2022,Q3,Materials,Timber and Wood,2.2,98.54
+2022,Q3,Materials,Water fittings,0.11,112.06
+2022,Q3,Materials,Water wastes,0.12,104.32
+2022,Q3,Transport and Fuel,Fuel,3.99,111.95
+2022,Q3,Transport and Fuel,Transport,5.99,115.35
+2022,Q4,Equipment,Compressors,3.04,104.27
+2022,Q4,Equipment,Equipment-Concrete Mixer,5.16,105.39
+2022,Q4,Equipment,Equipment-Concrete poker / Vibrator,2.36,102.14
+2022,Q4,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,100.66
+2022,Q4,Labour,Carpenter/Painter/Welder/Mechanic,3.53,107.39
+2022,Q4,Labour,Casual,6.67,109.65
+2022,Q4,Labour,Machine /plant operators,0.91,105.1
+2022,Q4,Labour,Mason/foreman,7.8,109.21
+2022,Q4,Labour,Plumber/Electrician,0.52,101.41
+2022,Q4,Labour,Watchman,2.01,110.28
+2022,Q4,Materials,Ballast,4.5,100.47
+2022,Q4,Materials,Cement /Lime,14.18,103.51
+2022,Q4,Materials,Chip boards and MDF,1.01,96.55
+2022,Q4,Materials,Damp Proofing and Anti-termite,0.58,81.6
+2022,Q4,Materials,Doors,0.24,109.27
+2022,Q4,Materials,Electrical fittings,0.51,104.35
+2022,Q4,Materials,Glass and glass putty,0.16,135.59
+2022,Q4,Materials,Hard core,8.37,108.76
+2022,Q4,Materials,Locks and iron mongery,0.78,109.01
+2022,Q4,Materials,Metal doors and windows,0.26,101.27
+2022,Q4,Materials,Paints,1.06,106.08
+2022,Q4,Materials,Paving blocks,2.06,114.22
+2022,Q4,Materials,"Quarry products(waste,dust and murram)",1.27,101.97
+2022,Q4,Materials,Roofing materials,0.7,110.42
+2022,Q4,Materials,Sand,3.14,96.2
+2022,Q4,Materials,Sanitary fittings,0.16,114.23
+2022,Q4,Materials,Steel and reinforced bars,10.69,168.58
+2022,Q4,Materials,Stones,2.42,100.31
+2022,Q4,Materials,Tiles,0.84,112.1
+2022,Q4,Materials,Timber and Wood,2.2,97.52
+2022,Q4,Materials,Water fittings,0.11,112.72
+2022,Q4,Materials,Water wastes,0.12,107.67
+2022,Q4,Transport and Fuel,Fuel,3.99,116.38
+2022,Q4,Transport and Fuel,Transport,5.99,117.72
+2023,Q1,Equipment,Compressors,3.04,104.27
+2023,Q1,Equipment,Equipment-Concrete Mixer,5.16,105.39
+2023,Q1,Equipment,Equipment-Concrete poker / Vibrator,2.36,102.14
+2023,Q1,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,100.66
+2023,Q1,Labour,Carpenter/Painter/Welder/Mechanic,3.53,106.61
+2023,Q1,Labour,Casual,6.67,109.65
+2023,Q1,Labour,Machine /plant operators,0.91,105.6
+2023,Q1,Labour,Mason/foreman,7.8,109.21
+2023,Q1,Labour,Plumber/Electrician,0.52,103.98
+2023,Q1,Labour,Watchman,2.01,110.28
+2023,Q1,Materials,Ballast,4.5,101.11
+2023,Q1,Materials,Cement /Lime,14.18,104.11
+2023,Q1,Materials,Chip boards and MDF,1.01,96.62
+2023,Q1,Materials,Damp Proofing and Anti-termite,0.58,83.33
+2023,Q1,Materials,Doors,0.24,109.32
+2023,Q1,Materials,Electrical fittings,0.51,104.53
+2023,Q1,Materials,Glass and glass putty,0.16,135.4
+2023,Q1,Materials,Hard core,8.37,110.19
+2023,Q1,Materials,Locks and iron mongery,0.78,109.05
+2023,Q1,Materials,Metal doors and windows,0.26,103.99
+2023,Q1,Materials,Paints,1.06,106.48
+2023,Q1,Materials,Paving blocks,2.06,116.22
+2023,Q1,Materials,"Quarry products(waste,dust and murram)",1.27,104.6
+2023,Q1,Materials,Roofing materials,0.7,110.18
+2023,Q1,Materials,Sand,3.14,96.4
+2023,Q1,Materials,Sanitary fittings,0.16,113.87
+2023,Q1,Materials,Steel and reinforced bars,10.69,172.81
+2023,Q1,Materials,Stones,2.42,99.91
+2023,Q1,Materials,Tiles,0.84,111.79
+2023,Q1,Materials,Timber and Wood,2.2,97.54
+2023,Q1,Materials,Water fittings,0.11,112.44
+2023,Q1,Materials,Water wastes,0.12,107.57
+2023,Q1,Transport and Fuel,Fuel,3.99,119.38
+2023,Q1,Transport and Fuel,Transport,5.99,119.35
+2023,Q2,Equipment,Compressors,3.04,104.27
+2023,Q2,Equipment,Equipment-Concrete Mixer,5.16,104.49
+2023,Q2,Equipment,Equipment-Concrete poker / Vibrator,2.36,102.14
+2023,Q2,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,100.66
+2023,Q2,Labour,Carpenter/Painter/Welder/Mechanic,3.53,105.77
+2023,Q2,Labour,Casual,6.67,111.71
+2023,Q2,Labour,Machine /plant operators,0.91,106.27
+2023,Q2,Labour,Mason/foreman,7.8,110.37
+2023,Q2,Labour,Plumber/Electrician,0.52,105.88
+2023,Q2,Labour,Watchman,2.01,110.28
+2023,Q2,Materials,Ballast,4.5,101.5
+2023,Q2,Materials,Cement /Lime,14.18,102.34
+2023,Q2,Materials,Chip boards and MDF,1.01,95.23
+2023,Q2,Materials,Damp Proofing and Anti-termite,0.58,81.14
+2023,Q2,Materials,Doors,0.24,109.15
+2023,Q2,Materials,Electrical fittings,0.51,105.38
+2023,Q2,Materials,Glass and glass putty,0.16,131.21
+2023,Q2,Materials,Hard core,8.37,104.51
+2023,Q2,Materials,Locks and iron mongery,0.78,108.68
+2023,Q2,Materials,Metal doors and windows,0.26,108.27
+2023,Q2,Materials,Paints,1.06,109.32
+2023,Q2,Materials,Paving blocks,2.06,113.35
+2023,Q2,Materials,"Quarry products(waste,dust and murram)",1.27,103.43
+2023,Q2,Materials,Roofing materials,0.7,109.76
+2023,Q2,Materials,Sand,3.14,99.29
+2023,Q2,Materials,Sanitary fittings,0.16,113.56
+2023,Q2,Materials,Steel and reinforced bars,10.69,172.61
+2023,Q2,Materials,Stones,2.42,97.76
+2023,Q2,Materials,Tiles,0.84,109.47
+2023,Q2,Materials,Timber and Wood,2.2,96.54
+2023,Q2,Materials,Water fittings,0.11,113.98
+2023,Q2,Materials,Water wastes,0.12,103.44
+2023,Q2,Transport and Fuel,Fuel,3.99,123.9
+2023,Q2,Transport and Fuel,Transport,5.99,121.18
+2023,Q3,Equipment,Compressors,3.04,104.74
+2023,Q3,Equipment,Equipment-Concrete Mixer,5.16,104.49
+2023,Q3,Equipment,Equipment-Concrete poker / Vibrator,2.36,103.94
+2023,Q3,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,102.31
+2023,Q3,Labour,Carpenter/Painter/Welder/Mechanic,3.53,107.07
+2023,Q3,Labour,Casual,6.67,114.02
+2023,Q3,Labour,Machine /plant operators,0.91,107.07
+2023,Q3,Labour,Mason/foreman,7.8,110.89
+2023,Q3,Labour,Plumber/Electrician,0.52,106.62
+2023,Q3,Labour,Watchman,2.01,114.11
+2023,Q3,Materials,Ballast,4.5,101.86
+2023,Q3,Materials,Cement /Lime,14.18,102.79
+2023,Q3,Materials,Chip boards and MDF,1.01,95.76
+2023,Q3,Materials,Damp Proofing and Anti-termite,0.58,81.52
+2023,Q3,Materials,Doors,0.24,109.25
+2023,Q3,Materials,Electrical fittings,0.51,104.57
+2023,Q3,Materials,Glass and glass putty,0.16,131.58
+2023,Q3,Materials,Hard core,8.37,106.19
+2023,Q3,Materials,Locks and iron mongery,0.78,108.95
+2023,Q3,Materials,Metal doors and windows,0.26,109.96
+2023,Q3,Materials,Paints,1.06,108.53
+2023,Q3,Materials,Paving blocks,2.06,114.32
+2023,Q3,Materials,"Quarry products(waste,dust and murram)",1.27,103.69
+2023,Q3,Materials,Roofing materials,0.7,110.2
+2023,Q3,Materials,Sand,3.14,100.18
+2023,Q3,Materials,Sanitary fittings,0.16,112.37
+2023,Q3,Materials,Steel and reinforced bars,10.69,175.25
+2023,Q3,Materials,Stones,2.42,99.01
+2023,Q3,Materials,Tiles,0.84,110.17
+2023,Q3,Materials,Timber and Wood,2.2,97.32
+2023,Q3,Materials,Water fittings,0.11,113.78
+2023,Q3,Materials,Water wastes,0.12,101.4
+2023,Q3,Transport and Fuel,Fuel,3.99,127.81
+2023,Q3,Transport and Fuel,Transport,5.99,125.24
+2023,Q4,Equipment,Compressors,3.04,105.17
+2023,Q4,Equipment,Equipment-Concrete Mixer,5.16,104.49
+2023,Q4,Equipment,Equipment-Concrete poker / Vibrator,2.36,105.49
+2023,Q4,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,102.55
+2023,Q4,Labour,Carpenter/Painter/Welder/Mechanic,3.53,107.77
+2023,Q4,Labour,Casual,6.67,114.02
+2023,Q4,Labour,Machine /plant operators,0.91,107.07
+2023,Q4,Labour,Mason/foreman,7.8,112.12
+2023,Q4,Labour,Plumber/Electrician,0.52,108.25
+2023,Q4,Labour,Watchman,2.01,115.88
+2023,Q4,Materials,Ballast,4.5,102.48
+2023,Q4,Materials,Cement /Lime,14.18,106.98
+2023,Q4,Materials,Chip boards and MDF,1.01,96.97
+2023,Q4,Materials,Damp Proofing and Anti-termite,0.58,81.47
+2023,Q4,Materials,Doors,0.24,110.04
+2023,Q4,Materials,Electrical fittings,0.51,106.29
+2023,Q4,Materials,Glass and glass putty,0.16,131.11
+2023,Q4,Materials,Hard core,8.37,109.51
+2023,Q4,Materials,Locks and iron mongery,0.78,110.83
+2023,Q4,Materials,Metal doors and windows,0.26,114.83
+2023,Q4,Materials,Paints,1.06,111.08
+2023,Q4,Materials,Paving blocks,2.06,117.54
+2023,Q4,Materials,"Quarry products(waste,dust and murram)",1.27,106.19
+2023,Q4,Materials,Roofing materials,0.7,111.95
+2023,Q4,Materials,Sand,3.14,99.29
+2023,Q4,Materials,Sanitary fittings,0.16,113.82
+2023,Q4,Materials,Steel and reinforced bars,10.69,175.88
+2023,Q4,Materials,Stones,2.42,99.81
+2023,Q4,Materials,Tiles,0.84,107.94
+2023,Q4,Materials,Timber and Wood,2.2,98.57
+2023,Q4,Materials,Water fittings,0.11,117.5
+2023,Q4,Materials,Water wastes,0.12,101.68
+2023,Q4,Transport and Fuel,Fuel,3.99,134.8
+2023,Q4,Transport and Fuel,Transport,5.99,131.02
+2024,Q1,Equipment,Compressors,3.04,98.96
+2024,Q1,Equipment,Equipment-Concrete Mixer,5.16,102.74
+2024,Q1,Equipment,Equipment-Concrete poker / Vibrator,2.36,100.52
+2024,Q1,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,104.37
+2024,Q1,Labour,Carpenter/Painter/Welder/Mechanic,3.53,107.77
+2024,Q1,Labour,Casual,6.67,114.02
+2024,Q1,Labour,Machine /plant operators,0.91,107.2
+2024,Q1,Labour,Mason/foreman,7.8,112.12
+2024,Q1,Labour,Plumber/Electrician,0.52,108.25
+2024,Q1,Labour,Watchman,2.01,115.88
+2024,Q1,Materials,Ballast,4.5,103.25
+2024,Q1,Materials,Cement /Lime,14.18,110.71
+2024,Q1,Materials,Chip boards and MDF,1.01,94.89
+2024,Q1,Materials,Damp Proofing and Anti-termite,0.58,82.96
+2024,Q1,Materials,Doors,0.24,111.79
+2024,Q1,Materials,Electrical fittings,0.51,106.53
+2024,Q1,Materials,Glass and glass putty,0.16,131.52
+2024,Q1,Materials,Hard core,8.37,111.29
+2024,Q1,Materials,Locks and iron mongery,0.78,111.13
+2024,Q1,Materials,Metal doors and windows,0.26,114.83
+2024,Q1,Materials,Paints,1.06,108.41
+2024,Q1,Materials,Paving blocks,2.06,118.78
+2024,Q1,Materials,"Quarry products(waste,dust and murram)",1.27,108.22
+2024,Q1,Materials,Roofing materials,0.7,116.49
+2024,Q1,Materials,Sand,3.14,100.53
+2024,Q1,Materials,Sanitary fittings,0.16,114.98
+2024,Q1,Materials,Steel and reinforced bars,10.69,177.86
+2024,Q1,Materials,Stones,2.42,104.28
+2024,Q1,Materials,Tiles,0.84,104.77
+2024,Q1,Materials,Timber and Wood,2.2,95.79
+2024,Q1,Materials,Water fittings,0.11,115.15
+2024,Q1,Materials,Water wastes,0.12,102.35
+2024,Q1,Transport and Fuel,Fuel,3.99,132.74
+2024,Q1,Transport and Fuel,Transport,5.99,128.03
+2024,Q2,Equipment,Compressors,3.04,100.0
+2024,Q2,Equipment,Equipment-Concrete Mixer,5.16,102.96
+2024,Q2,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,101.26
+2024,Q2,Labour,Carpenter/Painter/Welder/Mechanic,3.53,109.55
+2024,Q2,Labour,Casual,6.67,115.02
+2024,Q2,Labour,Machine /plant operators,0.91,105.29
+2024,Q2,Labour,Mason/foreman,7.8,113.14
+2024,Q2,Labour,Plumber/Electrician,0.52,111.08
+2024,Q2,Labour,Watchman,2.01,116.42
+2024,Q2,Materials,Doors,0.24,113.07
+2024,Q2,Materials,Electrical fittings,0.51,107.72
+2024,Q2,Materials,Glass and glass putty,0.16,128.11
+2024,Q2,Materials,Locks and iron mongery,0.78,113.18
+2024,Q2,Materials,Metal doors and windows,0.26,121.05
+2024,Q2,Materials,Paints,1.06,112.47
+2024,Q2,Materials,Paving blocks,2.06,122.71
+2024,Q2,Materials,Roofing materials,0.7,120.6
+2024,Q2,Materials,Sanitary fittings,0.16,109.47
+2024,Q2,Materials,Tiles,0.84,101.85
+2024,Q2,Materials,Water fittings,0.11,117.92
+2024,Q2,Materials,Water wastes,0.12,101.33
+2024,Q2,Transport and Fuel,Fuel,3.99,131.75
+2024,Q2,Transport and Fuel,Transport,5.99,129.33
+2024,Q4,Equipment,Compressors,3.04,100.0
+2024,Q4,Equipment,Equipment-Concrete Mixer,5.16,102.96
+2024,Q4,Labour,Carpenter/Painter/Welder/Mechanic,3.53,113.81
+2024,Q4,Labour,Casual,6.67,118.29
+2024,Q4,Labour,Machine /plant operators,0.91,107.65
+2024,Q4,Labour,Mason/foreman,7.8,113.56
+2024,Q4,Labour,Plumber/Electrician,0.52,112.16
+2024,Q4,Labour,Watchman,2.01,121.95
+2024,Q4,Materials,Doors,0.24,113.05
+2024,Q4,Materials,Electrical fittings,0.51,115.36
+2024,Q4,Materials,Glass and glass putty,0.16,128.42
+2024,Q4,Materials,Locks and iron mongery,0.78,113.71
+2024,Q4,Materials,Metal doors and windows,0.26,123.29
+2024,Q4,Materials,Paints,1.06,113.25
+2024,Q4,Materials,Paving blocks,2.06,123.9
+2024,Q4,Materials,Roofing materials,0.7,122.66
+2024,Q4,Materials,Sanitary fittings,0.16,110.93
+2024,Q4,Materials,Tiles,0.84,106.69
+2024,Q4,Materials,Water fittings,0.11,116.56
+2024,Q4,Materials,Water wastes,0.12,103.41
+2024,Q4,Transport and Fuel,Fuel,3.99,131.66
+2024,Q4,Transport and Fuel,Transport,5.99,128.46
+2025,Q1,Equipment,Compressors,3.04,100.94
+2025,Q1,Equipment,Equipment-Concrete Mixer,5.16,103.19
+2025,Q1,Equipment,Equipment-Concrete poker / Vibrator,2.36,98.76
+2025,Q1,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,100.16
+2025,Q1,Labour,Carpenter/Painter/Welder/Mechanic,3.53,114.16
+2025,Q1,Labour,Casual,6.67,118.29
+2025,Q1,Labour,Machine /plant operators,0.91,107.32
+2025,Q1,Labour,Mason/foreman,7.8,113.56
+2025,Q1,Labour,Plumber/Electrician,0.52,112.49
+2025,Q1,Labour,Watchman,2.01,121.95
+2025,Q1,Materials,Ballast,4.5,101.53
+2025,Q1,Materials,Cement /Lime,14.18,117.36
+2025,Q1,Materials,Chip boards and MDF,1.01,92.94
+2025,Q1,Materials,Damp Proofing and Anti-termite,0.58,81.89
+2025,Q1,Materials,Doors,0.24,112.69
+2025,Q1,Materials,Electrical fittings,0.51,115.52
+2025,Q1,Materials,Glass and glass putty,0.16,127.54
+2025,Q1,Materials,Hard core,8.37,112.23
+2025,Q1,Materials,Locks and iron mongery,0.78,114.13
+2025,Q1,Materials,Metal doors and windows,0.26,123.29
+2025,Q1,Materials,Paints,1.06,113.56
+2025,Q1,Materials,Paving blocks,2.06,124.44
+2025,Q1,Materials,"Quarry products(waste,dust and murram)",1.27,107.44
+2025,Q1,Materials,Roofing materials,0.7,122.3
+2025,Q1,Materials,Sand,3.14,104.89
+2025,Q1,Materials,Sanitary fittings,0.16,112.42
+2025,Q1,Materials,Steel and reinforced bars,10.69,173.44
+2025,Q1,Materials,Stones,2.42,99.14
+2025,Q1,Materials,Tiles,0.84,106.65
+2025,Q1,Materials,Timber and Wood,2.2,101.4
+2025,Q1,Materials,Water fittings,0.11,116.4
+2025,Q1,Materials,Water wastes,0.12,102.12
+2025,Q1,Transport and Fuel,Fuel,3.99,131.48
+2025,Q1,Transport and Fuel,Transport,5.99,127.72
+2025,Q2,Equipment,Compressors,3.04,100.94
+2025,Q2,Equipment,Equipment-Concrete Mixer,5.16,103.19
+2025,Q2,Equipment,Equipment-Concrete poker / Vibrator,2.36,98.76
+2025,Q2,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,100.16
+2025,Q2,Labour,Carpenter/Painter/Welder/Mechanic,3.53,114.16
+2025,Q2,Labour,Casual,6.67,118.29
+2025,Q2,Labour,Machine /plant operators,0.91,107.32
+2025,Q2,Labour,Mason/foreman,7.8,113.56
+2025,Q2,Labour,Plumber/Electrician,0.52,112.49
+2025,Q2,Labour,Watchman,2.01,121.95
+2025,Q2,Materials,Ballast,4.5,102.07
+2025,Q2,Materials,Cement /Lime,14.18,120.44
+2025,Q2,Materials,Chip boards and MDF,1.01,93.0
+2025,Q2,Materials,Damp Proofing and Anti-termite,0.58,82.69
+2025,Q2,Materials,Doors,0.24,112.92
+2025,Q2,Materials,Electrical fittings,0.51,114.7
+2025,Q2,Materials,Glass and glass putty,0.16,127.59
+2025,Q2,Materials,Hard core,8.37,112.28
+2025,Q2,Materials,Locks and iron mongery,0.78,116.13
+2025,Q2,Materials,Metal doors and windows,0.26,124.98
+2025,Q2,Materials,Paints,1.06,113.58
+2025,Q2,Materials,Paving blocks,2.06,126.41
+2025,Q2,Materials,"Quarry products(waste,dust and murram)",1.27,107.7
+2025,Q2,Materials,Roofing materials,0.7,122.96
+2025,Q2,Materials,Sand,3.14,106.4
+2025,Q2,Materials,Sanitary fittings,0.16,112.45
+2025,Q2,Materials,Steel and reinforced bars,10.69,175.99
+2025,Q2,Materials,Stones,2.42,99.29
+2025,Q2,Materials,Tiles,0.84,107.71
+2025,Q2,Materials,Timber and Wood,2.2,103.94
+2025,Q2,Materials,Water fittings,0.11,117.3
+2025,Q2,Materials,Water wastes,0.12,103.69
+2025,Q2,Transport and Fuel,Fuel,3.99,129.27
+2025,Q2,Transport and Fuel,Transport,5.99,128.47
+2025,Q3,Materials,Cement /Lime,14.18,118.76
+2025,Q3,Materials,Roofing materials,0.7,124.97
+2025,Q3,Materials,Sand,3.14,108.34
+2025,Q3,Materials,Steel and reinforced bars,10.69,184.99
+2025,Q3,Transport and Fuel,Fuel,3.99,136.12
+2025,Q3,Transport and Fuel,Transport,5.99,139.15
+2025,Q4,Equipment,Compressors,3.04,102.02
+2025,Q4,Equipment,Equipment-Concrete Mixer,5.16,103.19
+2025,Q4,Equipment,Equipment-Concrete poker / Vibrator,2.36,103.27
+2025,Q4,Equipment,Equipment-Excavator and Pedestrian Roller,2.64,100.66
+2025,Q4,Labour,Carpenter/Painter/Welder/Mechanic,3.53,113.1
+2025,Q4,Labour,Casual,6.67,118.96
+2025,Q4,Labour,Machine /plant operators,0.91,104.17
+2025,Q4,Labour,Mason/foreman,7.8,112.18
+2025,Q4,Labour,Plumber/Electrician,0.52,111.26
+2025,Q4,Labour,Watchman,2.01,121.98
+2025,Q4,Materials,Ballast,4.5,104.7
+2025,Q4,Materials,Cement /Lime,14.18,117.6
+2025,Q4,Materials,Chip boards and MDF,1.01,89.82
+2025,Q4,Materials,Damp Proofing and Anti-termite,0.58,82.07
+2025,Q4,Materials,Doors,0.24,113.2
+2025,Q4,Materials,Electrical fittings,0.51,121.44
+2025,Q4,Materials,Glass and glass putty,0.16,126.35
+2025,Q4,Materials,Hard core,8.37,113.25
+2025,Q4,Materials,Locks and iron mongery,0.78,115.72
+2025,Q4,Materials,Metal doors and windows,0.26,123.41
+2025,Q4,Materials,Paints,1.06,114.85
+2025,Q4,Materials,Paving blocks,2.06,124.83
+2025,Q4,Materials,"Quarry products(waste,dust and murram)",1.27,107.98
+2025,Q4,Materials,Roofing materials,0.7,125.28
+2025,Q4,Materials,Sand,3.14,110.46
+2025,Q4,Materials,Sanitary fittings,0.16,113.32
+2025,Q4,Materials,Steel and reinforced bars,10.69,177.12
+2025,Q4,Materials,Stones,2.42,100.65
+2025,Q4,Materials,Tiles,0.84,106.94
+2025,Q4,Materials,Timber and Wood,2.2,99.19
+2025,Q4,Materials,Water fittings,0.11,118.15
+2025,Q4,Materials,Water wastes,0.12,101.45
+2025,Q4,Transport and Fuel,Fuel,3.99,134.55
+2025,Q4,Transport and Fuel,Transport,5.99,132.82
