@@ -9,56 +9,35 @@ def db():
     conn.row_factory = sqlite3.Row
     return conn
 
-# ── helpers ──────────────────────────────────────────────────────────────────
-
 def materials_index():
-    """Average index across steel, cement, timber for the latest quarter."""
     conn = db()
     row = conn.execute("""
-        SELECT AVG(price_index) as idx
-        FROM material_prices
+        SELECT AVG(price_index) as idx FROM material_prices
         WHERE year = (SELECT MAX(year) FROM material_prices)
           AND quarter = (
-                SELECT quarter FROM material_prices
-                WHERE year = (SELECT MAX(year) FROM material_prices)
-                ORDER BY quarter DESC LIMIT 1
-              )
+            SELECT quarter FROM material_prices
+            WHERE year = (SELECT MAX(year) FROM material_prices)
+            ORDER BY quarter DESC LIMIT 1)
     """).fetchone()
     conn.close()
     return round(row['idx'], 2)
 
 def steel_index():
-    """Steel-specific index for latest quarter (used in findings display)."""
     conn = db()
     row = conn.execute("""
         SELECT price_index FROM material_prices
         WHERE material = 'steel'
           AND year = (SELECT MAX(year) FROM material_prices)
           AND quarter = (
-                SELECT quarter FROM material_prices
-                WHERE year = (SELECT MAX(year) FROM material_prices)
-                ORDER BY quarter DESC LIMIT 1
-              )
+            SELECT quarter FROM material_prices
+            WHERE year = (SELECT MAX(year) FROM material_prices)
+            ORDER BY quarter DESC LIMIT 1)
     """).fetchone()
     conn.close()
     return round(row['price_index'], 1)
 
-def base_cost(county, unit_type):
-    """Average cost per category from cost_benchmarks, summed."""
-    conn = db()
-    row = conn.execute("""
-        SELECT SUM(avg_amount) as total FROM (
-            SELECT cost_category, AVG(amount_kes) as avg_amount
-            FROM cost_benchmarks
-            WHERE county = ? AND unit_type = ?
-            GROUP BY cost_category
-        )
-    """, (county, unit_type)).fetchone()
-    conn.close()
-    return round(row['total']) if row['total'] else None
-
-def cost_breakdown(county, unit_type):
-    """Per-category averages for the cost breakdown chart."""
+def category_costs(county, unit_type):
+    """Real per-category costs from CAHF — averaged across multiple records."""
     conn = db()
     rows = conn.execute("""
         SELECT cost_category, AVG(amount_kes) as avg_amount
@@ -70,8 +49,19 @@ def cost_breakdown(county, unit_type):
     conn.close()
     return [{'category': r['cost_category'], 'amount': round(r['avg_amount'])} for r in rows]
 
+def all_counties_costs(unit_type):
+    conn = db()
+    rows = conn.execute("""
+        SELECT county, SUM(avg_amount) as total FROM (
+            SELECT county, cost_category, AVG(amount_kes) as avg_amount
+            FROM cost_benchmarks WHERE unit_type = ?
+            GROUP BY county, cost_category
+        ) GROUP BY county ORDER BY total ASC
+    """, (unit_type,)).fetchall()
+    conn.close()
+    return [{'county': r['county'], 'base_cost': round(r['total'])} for r in rows]
+
 def median_income(county):
-    """Median monthly income from household_income table."""
     conn = db()
     row = conn.execute("""
         SELECT median_monthly_income_kes FROM household_income
@@ -80,30 +70,14 @@ def median_income(county):
     conn.close()
     return row['median_monthly_income_kes'] if row else None
 
-def all_counties_costs(unit_type):
-    """Base costs for all counties for comparison."""
-    conn = db()
-    rows = conn.execute("""
-        SELECT county, SUM(avg_amount) as total FROM (
-            SELECT county, cost_category, AVG(amount_kes) as avg_amount
-            FROM cost_benchmarks
-            WHERE unit_type = ?
-            GROUP BY county, cost_category
-        ) GROUP BY county ORDER BY total ASC
-    """, (unit_type,)).fetchall()
-    conn.close()
-    return [{'county': r['county'], 'base_cost': round(r['total'])} for r in rows]
-
 def material_trend():
-    """Full price index trend for all materials — for the trend chart."""
     conn = db()
     rows = conn.execute("""
         SELECT year, quarter, material, price_index
         FROM material_prices ORDER BY year, quarter, material
     """).fetchall()
     conn.close()
-    data = {}
-    labels = []
+    labels, data = [], {}
     for r in rows:
         label = f"{r['year']} {r['quarter']}"
         if label not in labels:
@@ -113,118 +87,145 @@ def material_trend():
         data[r['material']].append(round(r['price_index'], 1))
     return {'labels': labels, 'series': data}
 
-# ── API routes ────────────────────────────────────────────────────────────────
+# ── API ───────────────────────────────────────────────────────────────────────
 
 @app.route('/api/meta')
 def meta():
-    """Counties, unit types, and current index — for populating dropdowns."""
     conn = db()
-    counties = [r['county'] for r in conn.execute(
-        "SELECT DISTINCT county FROM cost_benchmarks ORDER BY county").fetchall()]
-    unit_types = [r['unit_type'] for r in conn.execute(
-        "SELECT DISTINCT unit_type FROM cost_benchmarks ORDER BY unit_type").fetchall()]
-    incomes = {}
-    for r in conn.execute("SELECT county, median_monthly_income_kes FROM household_income").fetchall():
-        incomes[r['county']] = r['median_monthly_income_kes']
+    counties   = [r['county']    for r in conn.execute("SELECT DISTINCT county FROM cost_benchmarks ORDER BY county").fetchall()]
+    unit_types = [r['unit_type'] for r in conn.execute("SELECT DISTINCT unit_type FROM cost_benchmarks ORDER BY unit_type").fetchall()]
+    incomes    = {r['county']: r['median_monthly_income_kes'] for r in conn.execute("SELECT county, median_monthly_income_kes FROM household_income").fetchall()}
     conn.close()
     return jsonify({
-        'counties':   counties,
-        'unit_types': unit_types,
-        'incomes':    incomes,
+        'counties':      counties,
+        'unit_types':    unit_types,
+        'incomes':       incomes,
         'current_index': materials_index(),
         'steel_index':   steel_index(),
         'base_index':    100
     })
 
+@app.route('/api/costs')
+def costs():
+    """Return per-category costs for a county/unit_type so frontend can render checkboxes."""
+    county    = request.args.get('county', 'Nairobi')
+    unit_type = request.args.get('unit_type', '2BR')
+    cats      = category_costs(county, unit_type)
+    curr_idx  = materials_index()
+    total     = sum(c['amount'] for c in cats)
+    for c in cats:
+        c['pct']             = round(c['amount'] / total * 100, 1)
+        c['adjusted_amount'] = round(c['amount'] * (curr_idx / 100))
+    return jsonify({'categories': cats, 'current_index': curr_idx})
+
 @app.route('/api/calculate', methods=['POST'])
 def calculate():
-    d        = request.json
-    county   = d.get('county', 'Nairobi')
-    utype    = d.get('unit_type', '2BR')
-    income   = float(d.get('income', 40000))
-    rate     = float(d.get('savings_rate', 0.30))
+    d         = request.json
+    county    = d.get('county', 'Nairobi')
+    utype     = d.get('unit_type', '2BR')
+    income    = float(d.get('income', 40000))
+    rate      = float(d.get('savings_rate', 0.30))
+    # list of categories James says he already has covered
+    excluded  = set(d.get('excluded_categories', []))
 
-    curr_idx = materials_index()
-    base     = base_cost(county, utype)
-    if not base:
+    curr_idx  = materials_index()
+    cats      = category_costs(county, utype)
+
+    if not cats:
         return jsonify({'error': 'No data for this county/unit type'}), 404
 
-    adjusted     = round(base * (curr_idx / 100))
-    annual_sav   = round(income * rate * 12)
-    years        = round(adjusted / annual_sav, 1)
+    full_base = sum(c['amount'] for c in cats)
+    full_adj  = round(full_base * (curr_idx / 100))
 
-    # breakdown
-    breakdown = cost_breakdown(county, utype)
-    total_b   = sum(c['amount'] for c in breakdown)
-    for c in breakdown:
-        c['pct'] = round(c['amount'] / total_b * 100, 1)
+    # what James still needs to save for
+    needed_cats = [c for c in cats if c['category'] not in excluded]
+    remaining_base = sum(c['amount'] for c in needed_cats)
+    remaining_adj  = round(remaining_base * (curr_idx / 100))
 
-    # labour pct
-    labour_pct = next((c['pct'] for c in breakdown if c['category'] == 'Labour'), 0)
+    annual_sav = round(income * rate * 12)
+    years      = round(remaining_adj / annual_sav, 1) if annual_sav > 0 else 0
 
-    # phase plan
-    phases = [
-        {'name': 'Foundation',   'share': 0.18},
-        {'name': 'Substructure', 'share': 0.22},
-        {'name': 'Walling',      'share': 0.28},
-        {'name': 'Roofing',      'share': 0.20},
-        {'name': 'Finishing',    'share': 0.12},
-    ]
-    for p in phases:
-        p['cost']  = round(adjusted * p['share'])
-        p['years'] = round((adjusted * p['share']) / annual_sav, 1)
+    # savings so far (excluded categories = already funded)
+    already_funded = round((full_base - remaining_base) * (curr_idx / 100))
 
-    # county comparison
-    all_costs = all_counties_costs(utype)
-    comparisons = []
-    for c in all_costs:
-        adj_c  = round(c['base_cost'] * (curr_idx / 100))
-        yrs_c  = round(adj_c / annual_sav, 1)
-        inc_c  = median_income(c['county'])
-        yrs_median = round(adj_c / (inc_c * 0.30 * 12), 1) if inc_c else None
-        comparisons.append({
-            'county':        c['county'],
-            'adjusted_cost': adj_c,
-            'years_user':    yrs_c,
-            'years_median':  yrs_median,
-            'is_selected':   c['county'] == county
+    # enrich categories with adjusted amounts and pct of full cost
+    for c in cats:
+        c['adjusted_amount'] = round(c['amount'] * (curr_idx / 100))
+        c['pct']             = round(c['amount'] / full_base * 100, 1)
+        c['excluded']        = c['category'] in excluded
+
+    # labour pct of full cost
+    labour_pct = next((c['pct'] for c in cats if c['category'] == 'Labour'), 0)
+
+    # what James still needs — ordered savings plan from DB categories
+    savings_plan = []
+    for c in needed_cats:
+        adj  = round(c['amount'] * (curr_idx / 100))
+        yrs  = round(adj / annual_sav, 1) if annual_sav > 0 else 0
+        savings_plan.append({
+            'category': c['category'],
+            'cost':     adj,
+            'years':    yrs,
+            'pct':      round(c['amount'] / remaining_base * 100, 1) if remaining_base > 0 else 0
         })
 
+    # county comparison
+    all_costs    = all_counties_costs(utype)
+    comparisons  = []
+    for co in all_costs:
+        # apply same exclusions proportionally for comparison
+        excluded_ratio = (full_base - remaining_base) / full_base if full_base > 0 else 0
+        adj_c   = round(co['base_cost'] * (1 - excluded_ratio) * (curr_idx / 100))
+        yrs_c   = round(adj_c / annual_sav, 1) if annual_sav > 0 else 0
+        inc_c   = median_income(co['county'])
+        yrs_med = round(adj_c / (inc_c * rate * 12), 1) if inc_c else None
+        comparisons.append({
+            'county':       co['county'],
+            'adjusted_cost': adj_c,
+            'years_user':   yrs_c,
+            'years_median': yrs_med,
+            'is_selected':  co['county'] == county
+        })
     cheapest = comparisons[0]
 
     # verdict
-    if years <= 5:
-        verdict = 'Build now'
-        advice  = f"At your savings rate you can afford to build in {years} years. Consider starting the foundation phase immediately — it only takes {phases[0]['years']} years to fund."
+    if years == 0:
+        verdict = 'Ready to build'
+        advice  = 'You have already covered all cost categories. You are ready to begin.'
+        level   = 'green'
+    elif years <= 5:
+        verdict = 'Build now — within reach'
+        advice  = f"At your savings rate you can cover the remaining costs in {years} years. You have already taken care of KSh {already_funded:,} worth of costs."
         level   = 'green'
     elif years <= 10:
         verdict = 'Build in phases'
-        advice  = f"You cannot fund the full build upfront. Start with the foundation in {phases[0]['years']} years, then build phase by phase. The full build completes in {years} years."
+        advice  = f"Save category by category — start with {savings_plan[0]['category'].lower()} in {savings_plan[0]['years']} years, then work through the rest. Full completion in {years} years."
         level   = 'amber'
     else:
+        verb    = f"Building in {cheapest['county']} cuts that to {cheapest['years_user']} years." if cheapest['county'] != county else ""
+        advice  = f"At {years} years this is a long road. {verb} Or increase your monthly savings rate to shorten the timeline."
         verdict = 'Not yet — but here is your path'
-        advice  = (f"At {years} years this is a long road in {county}. "
-                   f"Building in {cheapest['county']} cuts that to {cheapest['years_user']} years. "
-                   f"Or start with just the foundation — you can break ground in {phases[0]['years']} years.")
         level   = 'red'
 
     return jsonify({
-        'county':        county,
-        'unit_type':     utype,
-        'base_cost':     base,
-        'adjusted_cost': adjusted,
-        'current_index': curr_idx,
-        'annual_savings':annual_sav,
-        'years':         years,
-        'labour_pct':    labour_pct,
-        'steel_change':  round(steel_index() - 100, 1),
-        'verdict':       verdict,
-        'advice':        advice,
-        'level':         level,
-        'breakdown':     breakdown,
-        'phases':        phases,
-        'comparisons':   comparisons,
-        'cheapest':      cheapest
+        'county':           county,
+        'unit_type':        utype,
+        'full_cost':        full_adj,
+        'already_funded':   already_funded,
+        'remaining_cost':   remaining_adj,
+        'current_index':    curr_idx,
+        'annual_savings':   annual_sav,
+        'years':            years,
+        'labour_pct':       labour_pct,
+        'steel_change':     round(steel_index() - 100, 1),
+        'verdict':          verdict,
+        'advice':           advice,
+        'level':            level,
+        'categories':       cats,
+        'savings_plan':     savings_plan,
+        'comparisons':      comparisons,
+        'cheapest':         cheapest,
+        'excluded':         list(excluded)
     })
 
 @app.route('/api/trends')
@@ -236,5 +237,5 @@ def index():
     return send_from_directory('calculator', 'index.html')
 
 if __name__ == '__main__':
-    print("NjengaData calculator running at http://localhost:5000")
+    print("NjengaData running at http://localhost:5000")
     app.run(debug=True, port=5000)

@@ -6,719 +6,613 @@
 <title>NjengaData — Can I build?</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1B6CA8;--blue-lt:#E6F1FB;--blue-dk:#0C447C;
+  --green:#1D9E75;--green-lt:#E1F5EE;
+  --amber:#BA7517;--amber-lt:#FAEEDA;
+  --red:#A32D2D;--red-lt:#FCEBEB;
+  --gray:#5F5E5A;--gray-lt:#F1EFE8;
+  --border:#E0DDD6;--text:#1a1a1a;--muted:#666460;
+  --bg:#FAFAF8;--white:#FFFFFF;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
+header{background:var(--white);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:12px}
+.logo{font-size:17px;font-weight:700;color:var(--blue);letter-spacing:.04em}
+.logo span{font-weight:400;color:var(--muted);font-size:13px;margin-left:8px}
+.data-badge{margin-left:auto;font-size:11px;color:var(--muted);background:var(--gray-lt);padding:3px 10px;border-radius:20px}
+.layout{max-width:1120px;margin:0 auto;padding:20px 16px;display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start}
+@media(max-width:760px){.layout{grid-template-columns:1fr}}
+.panel{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px}
+.panel-title{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px;margin-top:12px}
+label:first-of-type{margin-top:0}
+select,input[type=number]{width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;color:var(--text);background:var(--white);appearance:none;-webkit-appearance:none}
+select:focus,input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,108,168,.12)}
+.slider-wrap{display:flex;align-items:center;gap:10px;margin-top:5px}
+input[type=range]{flex:1;-webkit-appearance:none;height:4px;background:var(--border);border-radius:2px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;height:17px;border-radius:50%;background:var(--blue);cursor:pointer;border:2px solid var(--white);box-shadow:0 0 0 1px var(--blue)}
+.slider-val{font-size:13px;font-weight:600;color:var(--blue);min-width:36px;text-align:right}
+.income-hint{font-size:11px;color:var(--green);margin-top:3px;font-style:italic;min-height:16px}
 
-  :root {
-    --blue:    #1B6CA8;
-    --blue-lt: #E6F1FB;
-    --blue-dk: #0C447C;
-    --green:   #1D9E75;
-    --green-lt:#E1F5EE;
-    --amber:   #BA7517;
-    --amber-lt:#FAEEDA;
-    --red:     #A32D2D;
-    --red-lt:  #FCEBEB;
-    --gray:    #5F5E5A;
-    --gray-lt: #F1EFE8;
-    --border:  #E0DDD6;
-    --text:    #1a1a1a;
-    --muted:   #666460;
-    --bg:      #FAFAF8;
-    --white:   #FFFFFF;
-  }
+/* category checkboxes */
+.cat-section{margin-top:14px}
+.cat-title{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.cat-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;margin-bottom:6px;cursor:pointer;transition:border-color .12s,background .12s}
+.cat-item:hover{border-color:var(--blue);background:var(--blue-lt)}
+.cat-item.checked{border-color:var(--green);background:var(--green-lt)}
+.cat-cb{width:16px;height:16px;border:1.5px solid var(--border);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .12s}
+.cat-item.checked .cat-cb{background:var(--green);border-color:var(--green)}
+.cat-cb-tick{display:none;color:white;font-size:10px;font-weight:700}
+.cat-item.checked .cat-cb-tick{display:block}
+.cat-name{font-size:13px;font-weight:500;color:var(--text);flex:1}
+.cat-amt{font-size:12px;color:var(--muted);text-align:right}
+.cat-saving{font-size:11px;color:var(--green);display:none}
+.cat-item.checked .cat-saving{display:block}
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 15px;
-    line-height: 1.6;
-  }
+.savings-summary{background:var(--green-lt);border:1px solid #9FE1CB;border-radius:8px;padding:10px 12px;margin-top:8px;font-size:13px;color:var(--green);display:none}
 
-  header {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
+.btn{width:100%;margin-top:16px;padding:11px;background:var(--blue);color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:background .12s}
+.btn:hover{background:var(--blue-dk)}
+.source-note{font-size:11px;color:var(--muted);margin-top:10px;text-align:center;line-height:1.5}
+.source-note strong{color:var(--text)}
 
-  .logo { font-size: 18px; font-weight: 700; color: var(--blue); letter-spacing: 0.04em; }
-  .logo span { font-weight: 400; color: var(--muted); font-size: 14px; margin-left: 8px; }
+/* hero */
+.hero{padding:22px 18px;background:var(--blue);border-radius:10px 10px 0 0;margin:-18px -18px 16px}
+.hero-name{font-size:10px;font-weight:700;color:rgba(255,255,255,.55);letter-spacing:.1em;text-transform:uppercase}
+.hero-title{font-size:20px;font-weight:700;color:white;margin:3px 0}
+.hero-sub{font-size:12px;color:rgba(255,255,255,.7)}
 
-  .data-badge {
-    margin-left: auto;
-    font-size: 11px;
-    color: var(--muted);
-    background: var(--gray-lt);
-    padding: 4px 10px;
-    border-radius: 20px;
-  }
+/* results */
+.results{display:none}
+.verdict-box{border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.verdict-box.green{background:var(--green-lt);border:1px solid #9FE1CB}
+.verdict-box.amber{background:var(--amber-lt);border:1px solid #FAC775}
+.verdict-box.red{background:var(--red-lt);border:1px solid #F7C1C1}
+.verdict-title{font-size:15px;font-weight:700;margin-bottom:5px}
+.verdict-box.green .verdict-title{color:var(--green)}
+.verdict-box.amber .verdict-title{color:var(--amber)}
+.verdict-box.red   .verdict-title{color:var(--red)}
+.verdict-body{font-size:13px;color:var(--muted);line-height:1.55}
 
-  .layout {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 24px 16px;
-    display: grid;
-    grid-template-columns: 340px 1fr;
-    gap: 20px;
-    align-items: start;
-  }
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.metric{background:var(--gray-lt);border-radius:8px;padding:10px 12px}
+.metric-label{font-size:11px;color:var(--muted);margin-bottom:3px}
+.metric-val{font-size:19px;font-weight:700;color:var(--text)}
+.metric-val.big{font-size:25px}
+.metric-val.red{color:var(--red)}
+.metric-val.amber{color:var(--amber)}
+.metric-val.green{color:var(--green)}
+.metric-sub{font-size:10px;color:var(--muted);margin-top:2px}
 
-  @media (max-width: 760px) {
-    .layout { grid-template-columns: 1fr; }
-  }
+.funded-bar{background:var(--gray-lt);border-radius:8px;padding:10px 14px;margin-bottom:14px;display:none}
+.funded-bar-title{font-size:12px;color:var(--muted);margin-bottom:6px}
+.funded-track{height:10px;background:#E0DDD6;border-radius:5px;overflow:hidden}
+.funded-fill{height:100%;background:var(--green);border-radius:5px;transition:width .5s ease}
+.funded-labels{display:flex;justify-content:space-between;margin-top:4px;font-size:11px;color:var(--muted)}
 
-  .panel {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-  }
+.kfacts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.kfact{border-radius:8px;padding:10px 12px}
+.kfact.red{background:var(--red-lt)}
+.kfact.amber{background:var(--amber-lt)}
+.kfact-label{font-size:11px;font-weight:600;margin-bottom:2px}
+.kfact.red .kfact-label{color:var(--red)}
+.kfact.amber .kfact-label{color:var(--amber)}
+.kfact-val{font-size:17px;font-weight:700}
+.kfact.red .kfact-val{color:var(--red)}
+.kfact.amber .kfact-val{color:var(--amber)}
+.kfact-src{font-size:10px;color:var(--muted)}
 
-  .panel-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 16px;
-  }
+/* tabs */
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--border);margin-bottom:14px}
+.tab{padding:7px 13px;font-size:13px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;background:none;border-top:none;border-left:none;border-right:none;border-radius:0}
+.tab.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:600}
+.tab:hover{color:var(--text)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.tab-note{font-size:11px;color:var(--muted);margin-bottom:10px}
 
-  label {
-    display: block;
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 5px;
-    margin-top: 14px;
-  }
+/* bars */
+.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.bar-label{font-size:13px;color:var(--muted);min-width:96px}
+.bar-wrap{flex:1;background:var(--gray-lt);border-radius:3px;height:9px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;transition:width .45s ease}
+.bar-pct{font-size:11px;color:var(--blue);min-width:34px;text-align:right;font-weight:600}
+.bar-amt{font-size:11px;color:var(--muted);min-width:90px;text-align:right}
+.bar-row.excluded .bar-label{text-decoration:line-through;opacity:.45}
+.bar-row.excluded .bar-fill{background:#B4B2A9}
+.bar-row.excluded .bar-pct{opacity:.4}
 
-  label:first-of-type { margin-top: 0; }
+/* savings plan — from real DB categories */
+.plan-item{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--gray-lt);border-radius:8px;margin-bottom:7px}
+.plan-num{width:22px;height:22px;background:var(--blue);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.plan-info{flex:1}
+.plan-name{font-size:13px;font-weight:600;color:var(--text)}
+.plan-detail{font-size:11px;color:var(--muted)}
+.plan-yrs{font-size:14px;font-weight:700;color:var(--blue);min-width:48px;text-align:right}
 
-  select, input[type=number] {
-    width: 100%;
-    padding: 9px 12px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 14px;
-    color: var(--text);
-    background: var(--white);
-    appearance: none;
-    -webkit-appearance: none;
-  }
+/* Q&A */
+.qa-item{border:1px solid var(--border);border-radius:8px;margin-bottom:7px;overflow:hidden}
+.qa-q{padding:10px 14px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.qa-q:hover{background:var(--gray-lt)}
+.qa-arrow{font-size:12px;color:var(--muted);transition:transform .2s}
+.qa-item.open .qa-arrow{transform:rotate(180deg)}
+.qa-a{display:none;padding:0 14px 12px;font-size:13px;color:var(--muted);line-height:1.55;border-top:1px solid var(--border)}
+.qa-item.open .qa-a{display:block}
+.qa-src{font-size:10px;color:var(--blue);margin-top:6px;font-weight:600}
 
-  select:focus, input:focus {
-    outline: none;
-    border-color: var(--blue);
-    box-shadow: 0 0 0 3px rgba(27,108,168,0.12);
-  }
+/* compare */
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+.compare-table th{text-align:left;padding:7px 9px;font-size:11px;color:var(--muted);border-bottom:1px solid var(--border);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.compare-table td{padding:8px 9px;border-bottom:1px solid var(--border);color:var(--text)}
+.compare-table tr.selected td{background:var(--blue-lt)}
+.compare-table tr:last-child td{border-bottom:none}
+.yc.ok{font-weight:700;color:var(--green)}
+.yc.warn{font-weight:700;color:var(--amber)}
+.yc.bad{font-weight:700;color:var(--red)}
+.badge{font-size:10px;padding:2px 6px;border-radius:20px;font-weight:600;margin-left:5px}
+.badge.cheapest{background:var(--green-lt);color:var(--green)}
+.badge.you{background:var(--blue-lt);color:var(--blue-dk)}
 
-  .slider-wrap {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 6px;
-  }
-
-  input[type=range] {
-    flex: 1;
-    -webkit-appearance: none;
-    height: 4px;
-    background: var(--border);
-    border-radius: 2px;
-    outline: none;
-  }
-
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 18px; height: 18px;
-    border-radius: 50%;
-    background: var(--blue);
-    cursor: pointer;
-    border: 2px solid var(--white);
-    box-shadow: 0 0 0 1px var(--blue);
-  }
-
-  .slider-val {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--blue);
-    min-width: 40px;
-    text-align: right;
-  }
-
-  .income-hint {
-    font-size: 11px;
-    color: var(--green);
-    margin-top: 4px;
-    font-style: italic;
-  }
-
-  .btn {
-    width: 100%;
-    margin-top: 20px;
-    padding: 12px;
-    background: var(--blue);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
-
-  .btn:hover { background: var(--blue-dk); }
-  .btn:active { transform: scale(0.99); }
-
-  .source-note {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 12px;
-    text-align: center;
-    line-height: 1.5;
-  }
-
-  .source-note strong { color: var(--text); }
-
-  /* results */
-  .results { display: none; }
-
-  .verdict-box {
-    border-radius: 10px;
-    padding: 16px 18px;
-    margin-bottom: 16px;
-  }
-
-  .verdict-box.green { background: var(--green-lt); border: 1px solid #9FE1CB; }
-  .verdict-box.amber { background: var(--amber-lt); border: 1px solid #FAC775; }
-  .verdict-box.red   { background: var(--red-lt);   border: 1px solid #F7C1C1; }
-
-  .verdict-title {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-
-  .verdict-box.green .verdict-title { color: var(--green); }
-  .verdict-box.amber .verdict-title { color: var(--amber); }
-  .verdict-box.red   .verdict-title { color: var(--red); }
-
-  .verdict-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-  .metrics {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-
-  .metric {
-    background: var(--gray-lt);
-    border-radius: 8px;
-    padding: 12px;
-  }
-
-  .metric-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
-  .metric-val   { font-size: 20px; font-weight: 700; color: var(--text); }
-  .metric-val.big { font-size: 26px; }
-  .metric-val.red   { color: var(--red); }
-  .metric-val.amber { color: var(--amber); }
-  .metric-val.green { color: var(--green); }
-  .metric-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
-
-  /* tabs */
-  .tabs {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0;
-  }
-
-  .tab {
-    padding: 8px 14px;
-    font-size: 13px;
-    color: var(--muted);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-    border-radius: 0;
-    background: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-  }
-
-  .tab.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 600; }
-  .tab:hover  { color: var(--text); }
-
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-
-  /* breakdown bars */
-  .bar-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-
-  .bar-label { font-size: 13px; color: var(--muted); min-width: 100px; }
-  .bar-wrap   { flex: 1; background: var(--gray-lt); border-radius: 3px; height: 10px; overflow: hidden; }
-  .bar-fill   { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
-  .bar-amt    { font-size: 12px; color: var(--muted); min-width: 80px; text-align: right; }
-  .bar-pct    { font-size: 11px; color: var(--blue); min-width: 36px; text-align: right; font-weight: 600; }
-
-  /* phase timeline */
-  .phase-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    padding: 10px 12px;
-    background: var(--gray-lt);
-    border-radius: 8px;
-  }
-
-  .phase-num {
-    width: 24px; height: 24px;
-    background: var(--blue);
-    color: white;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .phase-info { flex: 1; }
-  .phase-name { font-size: 13px; font-weight: 600; color: var(--text); }
-  .phase-detail { font-size: 11px; color: var(--muted); }
-
-  .phase-yrs {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--blue);
-    min-width: 52px;
-    text-align: right;
-  }
-
-  /* county comparison table */
-  .compare-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
-
-  .compare-table th {
-    text-align: left;
-    padding: 8px 10px;
-    font-size: 11px;
-    color: var(--muted);
-    border-bottom: 1px solid var(--border);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  .compare-table td {
-    padding: 9px 10px;
-    border-bottom: 1px solid var(--border);
-    color: var(--text);
-  }
-
-  .compare-table tr.selected td { background: var(--blue-lt); }
-  .compare-table tr:last-child td { border-bottom: none; }
-
-  .years-cell { font-weight: 700; }
-  .years-cell.ok    { color: var(--green); }
-  .years-cell.warn  { color: var(--amber); }
-  .years-cell.bad   { color: var(--red); }
-
-  .badge {
-    font-size: 10px;
-    padding: 2px 6px;
-    border-radius: 20px;
-    font-weight: 600;
-    margin-left: 6px;
-  }
-
-  .badge.cheapest { background: var(--green-lt); color: var(--green); }
-  .badge.you      { background: var(--blue-lt);  color: var(--blue-dk); }
-
-  .chart-wrap { position: relative; height: 220px; margin-top: 10px; }
-
-  .loading {
-    text-align: center;
-    padding: 40px;
-    color: var(--muted);
-    font-size: 14px;
-  }
-
-  .hero {
-    padding: 28px 24px;
-    background: var(--blue);
-    border-radius: 12px 12px 0 0;
-    margin: -20px -20px 20px;
-  }
-
-  .hero-name   { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; text-transform: uppercase; }
-  .hero-title  { font-size: 22px; font-weight: 700; color: white; margin: 4px 0; }
-  .hero-sub    { font-size: 13px; color: rgba(255,255,255,0.7); }
-
-  .divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+.chart-wrap{position:relative;height:210px;margin-top:8px}
+.placeholder{text-align:center;padding:50px 20px;color:var(--muted)}
+.placeholder-icon{font-size:36px;margin-bottom:10px}
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo">NjengaData <span>Housing Affordability Calculator</span></div>
-  <div class="data-badge">Powered by KNBS · CAHF · KCHS · Integrum</div>
+  <div class="data-badge">KNBS · CAHF · KCHS · Integrum</div>
 </header>
 
 <div class="layout">
 
-  <!-- LEFT: INPUTS -->
+  <!-- LEFT PANEL -->
   <div>
     <div class="panel">
       <div class="hero">
         <div class="hero-name">NjengaData</div>
         <div class="hero-title">Can I build?</div>
-        <div class="hero-sub">Enter your details. Get an honest answer.</div>
+        <div class="hero-sub">Enter your situation. Get an honest answer.</div>
       </div>
 
-      <label>County — where you want to build</label>
-      <select id="county"></select>
+      <label>County</label>
+      <select id="county" onchange="onCountyChange()"></select>
 
       <label>Unit type</label>
-      <select id="unit_type">
+      <select id="unit_type" onchange="onCountyChange()">
         <option value="2BR">2 Bedroom</option>
         <option value="3BR">3 Bedroom</option>
         <option value="Studio">Studio</option>
       </select>
 
-      <label>Monthly household income (KES)</label>
-      <input type="number" id="income" value="40000" min="5000" max="1000000" step="1000"
-             oninput="updateIncomeHint()">
+      <label>Monthly income (KES)</label>
+      <input type="number" id="income" value="40000" min="5000" max="1000000" step="1000" oninput="updateHint()">
       <div class="income-hint" id="income-hint"></div>
 
       <label>Monthly savings rate — <span id="rate-label">30%</span></label>
       <div class="slider-wrap">
         <input type="range" id="savings" min="5" max="60" value="30" step="5"
-               oninput="document.getElementById('rate-label').textContent=this.value+'%'; document.getElementById('savings-out').textContent=this.value+'%'">
+          oninput="document.getElementById('rate-label').textContent=this.value+'%';document.getElementById('savings-out').textContent=this.value+'%'">
         <span class="slider-val" id="savings-out">30%</span>
+      </div>
+
+      <!-- WHAT JAMES ALREADY HAS -->
+      <div class="cat-section">
+        <div class="cat-title">What I already have covered</div>
+        <div id="cat-list"></div>
+        <div class="savings-summary" id="savings-summary"></div>
       </div>
 
       <button class="btn" onclick="calculate()">Calculate my affordability</button>
 
       <p class="source-note">
-        Build costs from <strong>CAHF 2022</strong> · Adjusted using <strong>KNBS CIPI</strong> index ·
-        Income benchmarks from <strong>KCHS 2022</strong> · Regional data from <strong>Integrum</strong>
+        Costs from <strong>CAHF 2022</strong> · Adjusted by <strong>KNBS CIPI</strong> ·
+        Income from <strong>KCHS 2022</strong> · Regional data <strong>Integrum</strong>
       </p>
     </div>
   </div>
 
-  <!-- RIGHT: RESULTS -->
+  <!-- RIGHT PANEL -->
   <div>
-    <div id="placeholder" class="panel" style="text-align:center; padding: 60px 20px; color: var(--muted);">
-      <div style="font-size:40px; margin-bottom:12px;">🏗</div>
-      <div style="font-size:16px; font-weight:600; color:var(--text); margin-bottom:8px;">Your results appear here</div>
-      <div style="font-size:13px;">Fill in your details and click Calculate.</div>
+    <div id="placeholder" class="panel placeholder">
+      <div class="placeholder-icon">🏗</div>
+      <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px">Your results appear here</div>
+      <div style="font-size:13px">Fill in your details and tap Calculate.</div>
     </div>
 
     <div class="results" id="results">
 
-      <!-- VERDICT -->
-      <div class="panel" style="margin-bottom:16px;">
+      <div class="panel" style="margin-bottom:14px">
         <div class="verdict-box" id="verdict-box">
           <div class="verdict-title" id="verdict-title">—</div>
           <div class="verdict-body"  id="verdict-body">—</div>
         </div>
 
-        <div class="metrics">
-          <div class="metric">
-            <div class="metric-label">Build cost (2024)</div>
-            <div class="metric-val" id="r-cost">—</div>
-            <div class="metric-sub" id="r-cost-sub">—</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Years to save</div>
-            <div class="metric-val big" id="r-years">—</div>
-            <div class="metric-sub" id="r-years-sub">—</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Annual savings</div>
-            <div class="metric-val" id="r-savings">—</div>
-            <div class="metric-sub" id="r-savings-sub">—</div>
+        <!-- funded progress bar -->
+        <div class="funded-bar" id="funded-bar">
+          <div class="funded-bar-title" id="funded-bar-title"></div>
+          <div class="funded-track"><div class="funded-fill" id="funded-fill"></div></div>
+          <div class="funded-labels">
+            <span id="funded-left"></span>
+            <span id="funded-right"></span>
           </div>
         </div>
 
-        <!-- key facts from DB -->
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-          <div style="background:var(--red-lt); border-radius:8px; padding:10px 12px;">
-            <div style="font-size:11px; color:var(--red); font-weight:600;">Steel price rise (KNBS)</div>
-            <div style="font-size:18px; font-weight:700; color:var(--red);" id="r-steel">—</div>
-            <div style="font-size:11px; color:var(--muted);">since 2019 baseline</div>
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-label">Total build cost</div>
+            <div class="metric-val" id="r-full">—</div>
+            <div class="metric-sub">2024 prices (KNBS adjusted)</div>
           </div>
-          <div style="background:var(--amber-lt); border-radius:8px; padding:10px 12px;">
-            <div style="font-size:11px; color:var(--amber); font-weight:600;">Labour share (CAHF)</div>
-            <div style="font-size:18px; font-weight:700; color:var(--amber);" id="r-labour">—</div>
-            <div style="font-size:11px; color:var(--muted);">of total build cost</div>
+          <div class="metric">
+            <div class="metric-label">Still to save</div>
+            <div class="metric-val big" id="r-years">—</div>
+            <div class="metric-sub" id="r-years-sub">years</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">You save annually</div>
+            <div class="metric-val" id="r-savings">—</div>
+            <div class="metric-sub">KES per year</div>
+          </div>
+        </div>
+
+        <div class="kfacts">
+          <div class="kfact red">
+            <div class="kfact-label">Steel price rise</div>
+            <div class="kfact-val" id="r-steel">—</div>
+            <div class="kfact-src">KNBS CIPI since 2019</div>
+          </div>
+          <div class="kfact amber">
+            <div class="kfact-label">Labour share</div>
+            <div class="kfact-val" id="r-labour">—</div>
+            <div class="kfact-src">CAHF 2022 — of your build</div>
           </div>
         </div>
       </div>
 
-      <!-- TABS -->
       <div class="panel">
         <div class="tabs">
-          <button class="tab active" onclick="showTab('breakdown', this)">Cost breakdown</button>
-          <button class="tab" onclick="showTab('phases', this)">Phased plan</button>
-          <button class="tab" onclick="showTab('compare', this)">County comparison</button>
-          <button class="tab" onclick="showTab('trends', this)">Price trends</button>
+          <button class="tab active" onclick="showTab('breakdown',this)">Cost breakdown</button>
+          <button class="tab" onclick="showTab('plan',this)">Savings plan</button>
+          <button class="tab" onclick="showTab('compare',this)">Counties</button>
+          <button class="tab" onclick="showTab('trends',this)">Price trends</button>
+          <button class="tab" onclick="showTab('qa',this)">Q &amp; A</button>
         </div>
 
         <!-- BREAKDOWN -->
         <div class="tab-content active" id="tab-breakdown">
-          <div style="font-size:12px; color:var(--muted); margin-bottom:12px;">
-            Average cost per category — source: <strong>CAHF 2022</strong>
-          </div>
+          <div class="tab-note">Per-category costs from <strong>CAHF 2022</strong>. Struck-through = already covered by you.</div>
           <div id="breakdown-bars"></div>
         </div>
 
-        <!-- PHASES -->
-        <div class="tab-content" id="tab-phases">
-          <div style="font-size:12px; color:var(--muted); margin-bottom:12px;">
-            James does not need to save the full amount before starting. Each phase can be funded separately.
-          </div>
-          <div id="phase-list"></div>
+        <!-- SAVINGS PLAN -->
+        <div class="tab-content" id="tab-plan">
+          <div class="tab-note">How James builds phase by phase. Materials and labour costs come from <strong>CAHF 2022</strong> — labour is embedded in each phase, not saved for separately.</div>
+          <div id="plan-list"></div>
         </div>
 
-        <!-- COMPARE -->
+        <!-- COUNTY COMPARE -->
         <div class="tab-content" id="tab-compare">
-          <div style="font-size:12px; color:var(--muted); margin-bottom:12px;">
-            Same unit type, your income and savings rate, different counties — source: <strong>CAHF + KCHS</strong>
-          </div>
+          <div class="tab-note">Same unit type and savings rate, different counties — <strong>CAHF + KCHS</strong>. Excludes same categories you have already covered.</div>
           <table class="compare-table">
-            <thead>
-              <tr>
-                <th>County</th>
-                <th>Build cost</th>
-                <th>Your yrs</th>
-                <th>Median yrs</th>
-              </tr>
-            </thead>
+            <thead><tr><th>County</th><th>Remaining cost</th><th>Your yrs</th><th>Median yrs</th></tr></thead>
             <tbody id="compare-body"></tbody>
           </table>
         </div>
 
         <!-- TRENDS -->
         <div class="tab-content" id="tab-trends">
-          <div style="font-size:12px; color:var(--muted); margin-bottom:12px;">
-            Construction material price index 2019–2024 — source: <strong>KNBS CIPI</strong> · Base: 2019 Q1 = 100
-          </div>
-          <div class="chart-wrap">
-            <canvas id="trend-chart"></canvas>
-          </div>
+          <div class="tab-note">Construction material price index 2019–2024 — <strong>KNBS CIPI</strong>. Base: 2019 Q1 = 100.</div>
+          <div class="chart-wrap"><canvas id="trend-chart"></canvas></div>
         </div>
 
+        <!-- Q&A -->
+        <div class="tab-content" id="tab-qa">
+          <div class="tab-note">Likely judge questions — click to expand the answer.</div>
+          <div id="qa-list"></div>
+        </div>
       </div>
+
     </div>
   </div>
 </div>
 
 <script>
-  const API = '';
-  let meta = {};
-  let trendChart = null;
+const API = '';
+let meta = {}, cats = [], excluded = new Set(), trendChart = null;
 
-  // ── boot ──────────────────────────────────────────────────────────────────
-  async function boot() {
-    const res  = await fetch(API + '/api/meta');
-    meta = await res.json();
+const QA = [
+  { q: 'Where does the build cost come from?',
+    a: 'From the Centre for Affordable Housing Finance Africa (CAHF) 2022 Kenya report. We load county-level, per-category costs from our database (cost_benchmarks table) and average across multiple records for accuracy.',
+    src: 'Source: CAHF 2022 → cost_benchmarks table' },
+  { q: 'Why is the cost higher than the CAHF 2022 figure?',
+    a: 'Because we adjust for inflation using the KNBS Construction Input Price Index. We divide the current index by the 2019 baseline (100) and multiply. This reflects what the same build costs today — not in 2022.',
+    src: 'Source: KNBS CIPI → material_prices table' },
+  { q: 'How did you calculate the years to save?',
+    a: 'Remaining cost ÷ annual savings. Annual savings = monthly income × savings rate × 12. Simple, transparent, no hidden weights.',
+    src: 'Formula: years = remaining_cost / (income × rate × 12)' },
+  { q: 'Why is steel highlighted specifically?',
+    a: 'Steel (rebar) is the structural backbone of any concrete build. KNBS tracks it separately. Our data shows it rose 22.8% since the 2019 baseline — the sharpest rise of the three materials we track.',
+    src: 'Source: KNBS CIPI → material_prices table, material = steel' },
+  { q: 'What does "already covered" mean?',
+    a: 'If James already owns land, he unticks Land from the cost categories. The calculator removes that cost from what he still needs to save, reducing the years figure. Every category in the list comes directly from CAHF — it is not estimated.',
+    src: 'Source: CAHF 2022 → cost_benchmarks, category = Land' },
+  { q: 'Is this a real model or just arithmetic?',
+    a: 'It is a transparent affordability ratio model: adjusted cost divided by annual savings. We chose this deliberately over black-box ML — every number is traceable to a source row in the database. The next phase will add weighted regional inputs.',
+    src: 'Model: CAHF cost × (KNBS index / 100) ÷ (income × rate × 12)' },
+  { q: 'Why only four counties?',
+    a: 'Our CAHF dataset covers the four counties with complete 2022 cost breakdowns: Nairobi, Kiambu, Mombasa, and Nakuru. We do not extrapolate to counties with no data — honest scope is better than invented coverage.',
+    src: 'Source: CAHF 2022 → cost_benchmarks, DISTINCT county' },
+  { q: 'How is the county comparison fair if incomes differ?',
+    a: 'The "your years" column uses your income throughout — it shows what your situation looks like if you built elsewhere. The "median years" column uses each county\'s own KCHS 2022 median income to show the affordability gap for local residents.',
+    src: 'Source: KCHS 2022 → household_income table' },
+];
 
-    const sel = document.getElementById('county');
-    meta.counties.forEach(c => {
-      const opt = document.createElement('option');
-      opt.value = c;
-      opt.textContent = c;
-      if (c === 'Nairobi') opt.selected = true;
-      sel.appendChild(opt);
-    });
-
-    updateIncomeHint();
-    loadTrends();
-  }
-
-  function updateIncomeHint() {
-    const county = document.getElementById('county').value;
-    const median = meta.incomes && meta.incomes[county];
-    const hint   = document.getElementById('income-hint');
-    if (median) {
-      hint.textContent = `Median income in ${county}: KSh ${median.toLocaleString()}/month (KCHS 2022)`;
-    } else {
-      hint.textContent = '';
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    boot();
-    document.getElementById('county').addEventListener('change', updateIncomeHint);
+async function boot() {
+  const res = await fetch(API + '/api/meta');
+  meta = await res.json();
+  const sel = document.getElementById('county');
+  meta.counties.forEach(c => {
+    const o = document.createElement('option');
+    o.value = c; o.textContent = c;
+    if (c === 'Nairobi') o.selected = true;
+    sel.appendChild(o);
   });
+  updateHint();
+  loadTrends();
+  loadCats();
+  buildQA();
+}
 
-  // ── calculate ─────────────────────────────────────────────────────────────
-  async function calculate() {
-    const btn = document.querySelector('.btn');
-    btn.textContent = 'Calculating...';
-    btn.disabled = true;
+function updateHint() {
+  const county = document.getElementById('county').value;
+  const med    = meta.incomes && meta.incomes[county];
+  document.getElementById('income-hint').textContent =
+    med ? `Median income in ${county}: KSh ${med.toLocaleString()}/month (KCHS 2022)` : '';
+}
 
-    const payload = {
-      county:       document.getElementById('county').value,
-      unit_type:    document.getElementById('unit_type').value,
-      income:       parseFloat(document.getElementById('income').value) || 40000,
-      savings_rate: parseFloat(document.getElementById('savings').value) / 100
-    };
+async function loadCats() {
+  const county    = document.getElementById('county').value;
+  const unit_type = document.getElementById('unit_type').value;
+  const res = await fetch(`${API}/api/costs?county=${county}&unit_type=${unit_type}`);
+  const d   = await res.json();
+  cats = d.categories;
+  excluded.clear();
+  renderCatList();
+}
 
-    try {
-      const res  = await fetch(API + '/api/calculate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const d = await res.json();
-      if (d.error) { alert(d.error); return; }
-      render(d);
-    } catch(e) {
-      alert('Could not connect to the server. Make sure app.py is running.');
-    } finally {
-      btn.textContent = 'Calculate my affordability';
-      btn.disabled = false;
-    }
-  }
+function renderCatList() {
+  const el = document.getElementById('cat-list');
+  el.innerHTML = cats.map(c => {
+    const ex = excluded.has(c.category);
+    return `<div class="cat-item ${ex?'checked':''}" onclick="toggleCat('${c.category}',this)">
+      <div class="cat-cb"><span class="cat-cb-tick">✓</span></div>
+      <div class="cat-name">${c.category}</div>
+      <div style="text-align:right">
+        <div class="cat-amt">KSh ${c.adjusted_amount.toLocaleString()}</div>
+        <div class="cat-saving">Covered — saving ${c.pct}%</div>
+      </div>
+    </div>`;
+  }).join('');
+  updateSavingsSummary();
+}
 
-  // ── render ────────────────────────────────────────────────────────────────
-  function render(d) {
-    document.getElementById('placeholder').style.display = 'none';
-    document.getElementById('results').style.display = 'block';
+function toggleCat(name, el) {
+  if (excluded.has(name)) excluded.delete(name);
+  else excluded.add(name);
+  el.classList.toggle('checked');
+  el.querySelector('.cat-cb-tick').style.display = excluded.has(name) ? 'block' : 'none';
+  updateSavingsSummary();
+}
 
-    // verdict
-    const vbox = document.getElementById('verdict-box');
-    vbox.className = 'verdict-box ' + d.level;
-    document.getElementById('verdict-title').textContent = d.verdict;
-    document.getElementById('verdict-body').textContent  = d.advice;
+function updateSavingsSummary() {
+  const covered = cats.filter(c => excluded.has(c.category));
+  const total   = covered.reduce((s, c) => s + c.adjusted_amount, 0);
+  const box     = document.getElementById('savings-summary');
+  if (covered.length === 0) { box.style.display = 'none'; return; }
+  box.style.display = 'block';
+  box.textContent   = `You have covered ${covered.length} categor${covered.length>1?'ies':'y'} — KSh ${total.toLocaleString()} already taken care of.`;
+}
 
-    // metrics
-    document.getElementById('r-cost').textContent     = 'KSh ' + d.adjusted_cost.toLocaleString();
-    document.getElementById('r-cost-sub').textContent  = `Base KSh ${d.base_cost.toLocaleString()} · index ${d.current_index}`;
-    const yEl = document.getElementById('r-years');
-    yEl.textContent  = d.years;
-    yEl.className    = 'metric-val big ' + (d.years <= 5 ? 'green' : d.years <= 10 ? 'amber' : 'red');
-    document.getElementById('r-years-sub').textContent  = 'years at current rate';
-    document.getElementById('r-savings').textContent   = 'KSh ' + d.annual_savings.toLocaleString();
-    document.getElementById('r-savings-sub').textContent = 'per year';
+function onCountyChange() { updateHint(); loadCats(); }
 
-    document.getElementById('r-steel').textContent  = '+' + d.steel_change + '%';
-    document.getElementById('r-labour').textContent = d.labour_pct + '%';
-
-    // breakdown bars
-    const colors = ['#1B6CA8','#2E86C1','#5DADE2','#85C1E9','#AED6F1'];
-    const barsHtml = d.breakdown.map((c, i) =>
-      `<div class="bar-row">
-        <div class="bar-label">${c.category}</div>
-        <div class="bar-wrap"><div class="bar-fill" style="width:${c.pct}%; background:${colors[i % colors.length]}"></div></div>
-        <div class="bar-pct">${c.pct}%</div>
-        <div class="bar-amt">KSh ${c.amount.toLocaleString()}</div>
-      </div>`
-    ).join('');
-    document.getElementById('breakdown-bars').innerHTML = barsHtml;
-
-    // phases
-    const phaseHtml = d.phases.map((p, i) =>
-      `<div class="phase-row">
-        <div class="phase-num">${i + 1}</div>
-        <div class="phase-info">
-          <div class="phase-name">${p.name}</div>
-          <div class="phase-detail">KSh ${p.cost.toLocaleString()} · ${Math.round(p.share * 100)}% of build</div>
-        </div>
-        <div class="phase-yrs">${p.years} yrs</div>
-      </div>`
-    ).join('');
-    document.getElementById('phase-list').innerHTML = phaseHtml;
-
-    // county comparison
-    const tbodyHtml = d.comparisons.map(c => {
-      const cls = c.years_user <= 5 ? 'ok' : c.years_user <= 10 ? 'warn' : 'bad';
-      const cheapBadge = c.county === d.cheapest.county ? '<span class="badge cheapest">cheapest</span>' : '';
-      const youBadge   = c.is_selected ? '<span class="badge you">you</span>' : '';
-      const medYrs = c.years_median ? c.years_median : '—';
-      return `<tr class="${c.is_selected ? 'selected' : ''}">
-        <td>${c.county}${cheapBadge}${youBadge}</td>
-        <td>KSh ${c.adjusted_cost.toLocaleString()}</td>
-        <td class="years-cell ${cls}">${c.years_user}</td>
-        <td>${medYrs}</td>
-      </tr>`;
-    }).join('');
-    document.getElementById('compare-body').innerHTML = tbodyHtml;
-  }
-
-  // ── trends chart ──────────────────────────────────────────────────────────
-  async function loadTrends() {
-    const res = await fetch(API + '/api/trends');
-    const d   = await res.json();
-
-    const palette = { steel: '#1B6CA8', cement: '#BA7517', timber: '#1D9E75' };
-
-    if (trendChart) trendChart.destroy();
-
-    trendChart = new Chart(document.getElementById('trend-chart'), {
-      type: 'line',
-      data: {
-        labels: d.labels,
-        datasets: Object.entries(d.series).map(([mat, vals]) => ({
-          label: mat.charAt(0).toUpperCase() + mat.slice(1),
-          data:  vals,
-          borderColor: palette[mat] || '#888',
-          backgroundColor: 'transparent',
-          borderWidth: 2,
-          pointRadius: 0,
-          pointHoverRadius: 4,
-          tension: 0.3
-        }))
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        interaction: { mode: 'index', intersect: false },
-        plugins: {
-          legend: { position: 'bottom', labels: { font: { size: 12 }, boxWidth: 12 } }
-        },
-        scales: {
-          x: {
-            ticks: {
-              maxTicksLimit: 8,
-              font: { size: 11 },
-              maxRotation: 0
-            },
-            grid: { display: false }
-          },
-          y: {
-            min: 95,
-            ticks: { font: { size: 11 }, callback: v => v },
-            grid: { color: '#f0ede8' },
-            title: { display: true, text: 'Index (2019 = 100)', font: { size: 11 } }
-          }
-        }
-      }
+async function calculate() {
+  const btn = document.querySelector('.btn');
+  btn.textContent = 'Calculating...'; btn.disabled = true;
+  const payload = {
+    county:              document.getElementById('county').value,
+    unit_type:           document.getElementById('unit_type').value,
+    income:              parseFloat(document.getElementById('income').value) || 40000,
+    savings_rate:        parseFloat(document.getElementById('savings').value) / 100,
+    excluded_categories: [...excluded]
+  };
+  try {
+    const res = await fetch(API + '/api/calculate', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
     });
+    const d = await res.json();
+    if (d.error) { alert(d.error); return; }
+    render(d);
+  } catch(e) {
+    alert('Cannot connect to server. Make sure app.py is running on port 5000.');
+  } finally {
+    btn.textContent = 'Calculate my affordability'; btn.disabled = false;
+  }
+}
+
+function render(d) {
+  document.getElementById('placeholder').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+
+  // verdict
+  const vbox = document.getElementById('verdict-box');
+  vbox.className = 'verdict-box ' + d.level;
+  document.getElementById('verdict-title').textContent = d.verdict;
+  document.getElementById('verdict-body').textContent  = d.advice;
+
+  // funded progress bar
+  const fundedBar = document.getElementById('funded-bar');
+  if (d.already_funded > 0) {
+    fundedBar.style.display = 'block';
+    const pct = Math.round(d.already_funded / d.full_cost * 100);
+    document.getElementById('funded-bar-title').textContent = `${pct}% of total cost already covered`;
+    document.getElementById('funded-fill').style.width = pct + '%';
+    document.getElementById('funded-left').textContent  = `KSh ${d.already_funded.toLocaleString()} covered`;
+    document.getElementById('funded-right').textContent = `KSh ${d.remaining_cost.toLocaleString()} remaining`;
+  } else {
+    fundedBar.style.display = 'none';
   }
 
-  // ── tabs ──────────────────────────────────────────────────────────────────
-  function showTab(name, btn) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('tab-' + name).classList.add('active');
+  // metrics
+  document.getElementById('r-full').textContent    = 'KSh ' + d.full_cost.toLocaleString();
+  const yEl = document.getElementById('r-years');
+  yEl.textContent = d.years;
+  yEl.className   = 'metric-val big ' + (d.years<=5?'green':d.years<=10?'amber':'red');
+  document.getElementById('r-years-sub').textContent = d.years===0 ? 'Ready now' : 'years to save';
+  document.getElementById('r-savings').textContent  = 'KSh ' + d.annual_savings.toLocaleString();
+  document.getElementById('r-steel').textContent    = '+' + d.steel_change + '%';
+  document.getElementById('r-labour').textContent   = d.labour_pct + '%';
+
+  // breakdown bars
+  const colors = ['#1B6CA8','#2E86C1','#5DADE2','#85C1E9','#AED6F1'];
+  document.getElementById('breakdown-bars').innerHTML = d.categories.map((c,i) =>
+    `<div class="bar-row ${c.excluded?'excluded':''}">
+      <div class="bar-label">${c.category}${c.excluded?' ✓':''}</div>
+      <div class="bar-wrap"><div class="bar-fill" style="width:${c.pct}%;background:${c.excluded?'#B4B2A9':colors[i%colors.length]}"></div></div>
+      <div class="bar-pct">${c.pct}%</div>
+      <div class="bar-amt">KSh ${c.adjusted_amount.toLocaleString()}</div>
+    </div>`
+  ).join('');
+
+  // savings plan — phase-based, labour embedded per phase
+  const planEl = document.getElementById('plan-list');
+  if (!d.savings_plan || d.savings_plan.length === 0) {
+    planEl.innerHTML = '<div style="font-size:13px;color:var(--green);padding:12px">All categories covered — ready to build.</div>';
+  } else {
+    // build phase plan from real CAHF data
+    // labour is distributed across phases, not saved for standalone
+    const rem     = d.remaining_cost;
+    const annual  = d.annual_savings;
+
+    // extract real costs from DB response
+    const cats    = d.categories.filter(c => !c.excluded);
+    const matCost = (cats.find(c=>c.category==='Materials') || {adjusted_amount:0}).adjusted_amount;
+    const labCost = (cats.find(c=>c.category==='Labour')    || {adjusted_amount:0}).adjusted_amount;
+    const comCost = (cats.find(c=>c.category==='Compliance')|| {adjusted_amount:0}).adjusted_amount;
+    const ovhCost = (cats.find(c=>c.category==='Overheads') || {adjusted_amount:0}).adjusted_amount;
+
+    // Phase 1: Permits and setup — save before breaking ground
+    // Compliance + Overheads (admin, setup costs)
+    const p1cost = comCost + ovhCost;
+
+    // Phases 2-5: physical construction
+    // Materials split: Foundation 20%, Walling 30%, Roofing 28%, Finishing 22%
+    // Labour embedded: Foundation 25%, Walling 35%, Roofing 25%, Finishing 15%
+    const matShares = [0.20, 0.30, 0.28, 0.22];
+    const labShares = [0.25, 0.35, 0.25, 0.15];
+    const phaseNames = ['Foundation', 'Walling & superstructure', 'Roofing', 'Finishing'];
+    const phaseDesc  = [
+      'Excavation, concrete, substructure',
+      'Block walls, lintels, columns',
+      'Timber, iron sheets or tiles, gutters',
+      'Plaster, windows, doors, plumbing, electrical'
+    ];
+
+    const buildPhases = phaseNames.map((name, i) => ({
+      name,
+      desc: phaseDesc[i],
+      cost: Math.round(matCost * matShares[i] + labCost * labShares[i]),
+    }));
+
+    const allPhases = p1cost > 0
+      ? [{ name:'Permits and setup', desc:'Compliance fees, approvals, overheads — before breaking ground', cost: Math.round(p1cost) }, ...buildPhases]
+      : buildPhases;
+
+    let cum = 0;
+    planEl.innerHTML = allPhases.map((p, i) => {
+      const yrs = annual > 0 ? (p.cost / annual).toFixed(1) : '—';
+      cum += p.cost;
+      const labNote = i === 0 ? '' : ` <span style="font-size:10px;color:var(--blue);background:var(--blue-lt);padding:1px 6px;border-radius:10px;margin-left:4px">materials + labour</span>`;
+      return `<div class="plan-item">
+        <div class="plan-num">${i+1}</div>
+        <div class="plan-info">
+          <div class="plan-name">${p.name}${labNote}</div>
+          <div class="plan-detail">${p.desc} · KSh ${p.cost.toLocaleString()}</div>
+        </div>
+        <div class="plan-yrs">${yrs} yrs</div>
+      </div>`;
+    }).join('');
   }
+
+  // county comparison
+  document.getElementById('compare-body').innerHTML = d.comparisons.map(c => {
+    const cls = c.years_user<=5?'ok':c.years_user<=10?'warn':'bad';
+    const cb  = c.county===d.cheapest.county ? '<span class="badge cheapest">cheapest</span>' : '';
+    const yb  = c.is_selected ? '<span class="badge you">you</span>' : '';
+    return `<tr class="${c.is_selected?'selected':''}">
+      <td>${c.county}${cb}${yb}</td>
+      <td>KSh ${c.adjusted_cost.toLocaleString()}</td>
+      <td class="yc ${cls}">${c.years_user}</td>
+      <td>${c.years_median||'—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+async function loadTrends() {
+  const res = await fetch(API + '/api/trends');
+  const d   = await res.json();
+  const pal = {steel:'#1B6CA8', cement:'#BA7517', timber:'#1D9E75'};
+  if (trendChart) trendChart.destroy();
+  trendChart = new Chart(document.getElementById('trend-chart'), {
+    type: 'line',
+    data: {
+      labels: d.labels,
+      datasets: Object.entries(d.series).map(([mat,vals]) => ({
+        label: mat.charAt(0).toUpperCase()+mat.slice(1),
+        data: vals, borderColor: pal[mat]||'#888',
+        backgroundColor:'transparent', borderWidth:2,
+        pointRadius:0, pointHoverRadius:4, tension:0.3
+      }))
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:10}}},
+      scales:{
+        x:{ticks:{maxTicksLimit:8,font:{size:10},maxRotation:0},grid:{display:false}},
+        y:{min:95,ticks:{font:{size:10}},grid:{color:'#f0ede8'},
+           title:{display:true,text:'Index (2019 = 100)',font:{size:10}}}
+      }
+    }
+  });
+}
+
+function buildQA() {
+  document.getElementById('qa-list').innerHTML = QA.map((item,i) =>
+    `<div class="qa-item" id="qa${i}">
+      <div class="qa-q" onclick="toggleQA(${i})">
+        <span>${item.q}</span><span class="qa-arrow">▼</span>
+      </div>
+      <div class="qa-a">${item.a}<div class="qa-src">${item.src}</div></div>
+    </div>`
+  ).join('');
+}
+
+function toggleQA(i) {
+  document.getElementById('qa'+i).classList.toggle('open');
+}
+
+function showTab(name, btn) {
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+}
+
+document.addEventListener('DOMContentLoaded', boot);
 </script>
 </body>
 </html>
